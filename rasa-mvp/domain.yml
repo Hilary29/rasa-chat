@@ -3,31 +3,110 @@ version: "3.1"
 intents:
   - greet
   - goodbye
+  - ask_help
   - affirm
   - deny
-  - mood_great
-  - mood_unhappy
+  - thank
   - bot_challenge
+  - what_is_virtual_card
+  - create_virtual_card
+  - card_usage
+  - fees_info
+  - payment_failed
+  - check_balance
+  - reload_card
+  - card_security
+  - contact_support
+  - ask_how
+  - out_of_scope
+  - transfert_mobile_money
+
+entities:
+  - phone_number
+  - amount
+
+slots:
+  phone_number:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: phone_number
+  amount:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: amount
 
 responses:
   utter_greet:
-  - text: "Hey! How are you?"
-
-  utter_cheer_up:
-  - text: "Here is something to cheer you up:"
-    image: "https://i.imgur.com/nGF1K8f.jpg"
-
-  utter_did_that_help:
-  - text: "Did that help you?"
-
-  utter_happy:
-  - text: "Great, carry on!"
+    - text: "Bonjour ! Je suis l'assistant Neero. Comment puis-je vous aider ?"
 
   utter_goodbye:
-  - text: "Bye"
+    - text: "Au revoir ! N'hésitez pas à revenir si vous avez d'autres questions."
+
+  utter_help:
+    - text: "Je peux vous aider avec : création de carte virtuelle, utilisation, frais, solde, rechargement et problèmes de paiement. Que souhaitez-vous savoir ?"
+
+  utter_affirm:
+    - text: "Parfait !"
+
+  utter_deny:
+    - text: "D'accord, pas de problème."
+
+  utter_thank:
+    - text: "Je vous en prie ! Y a-t-il autre chose que je puisse faire pour vous ?"
 
   utter_iamabot:
-  - text: "I am a bot, powered by Rasa."
+    - text: "Je suis un assistant virtuel Neero, propulsé par l'IA."
+
+  utter_what_is_virtual_card:
+    - text: "Une carte virtuelle Neero est une carte de paiement dématérialisée. Elle possède un numéro, une date d'expiration et un CVV, comme une carte classique, mais existe uniquement en version numérique. Idéale pour les achats en ligne en toute sécurité."
+
+  utter_create_virtual_card:
+    - text: "Pour créer une carte virtuelle Neero :\n1. Téléchargez l'application Neero\n2. Créez votre compte\n3. Vérifiez votre identité\n4. Cliquez sur 'Créer une carte'\n\nVotre carte sera générée instantanément !"
+
+  utter_card_usage:
+    - text: "Votre carte Neero fonctionne sur tous les sites acceptant les paiements par carte : Netflix, Amazon, Spotify, Uber, AliExpress, Google Play, et bien d'autres. Elle est utilisable partout où les cartes Visa/Mastercard sont acceptées en ligne."
+
+  utter_fees_info:
+    - text: "Nos tarifs Neero :\n- Création de carte : Gratuit\n- Rechargement : 1.5% du montant\n- Transactions : Aucun frais supplémentaire\n\nPour plus de détails, consultez notre grille tarifaire dans l'application."
+
+  utter_payment_failed:
+    - text: "Votre paiement a échoué ? Vérifiez :\n1. Le solde de votre carte\n2. La date d'expiration\n3. Le CVV saisi\n4. Que le site accepte les cartes virtuelles\n\nSi le problème persiste, contactez notre support."
+
+  utter_check_balance:
+    - text: "Pour consulter votre solde, ouvrez l'application Neero et accédez à votre tableau de bord. Le solde disponible s'affiche sur votre carte."
+
+  utter_reload_card:
+    - text: "Pour recharger votre carte Neero :\n1. Ouvrez l'application\n2. Sélectionnez votre carte\n3. Cliquez sur 'Recharger'\n4. Choisissez le montant et le mode de paiement\n\nLe rechargement est instantané !"
+
+  utter_card_security:
+    - text: "Votre carte Neero est hautement sécurisée :\n- Cryptage de bout en bout\n- Aucune donnée bancaire partagée avec les marchands\n- Possibilité de bloquer/débloquer instantanément\n- Notifications en temps réel\n\nVos fonds sont protégés."
+
+  utter_contact_support:
+    - text: "Pour contacter notre support :\n- Email : support@neero.com\n- Chat : dans l'application Neero\n- Horaires : 7j/7 de 8h à 22h\n\nUn conseiller vous répondra rapidement."
+
+  utter_ask_clarification:
+    - text: "Pouvez-vous préciser votre question ? Je peux vous aider avec le solde, le rechargement, la création de carte, les paiements ou la sécurité."
+
+  utter_out_of_scope:
+    - text: "Désolé, je suis spécialisé dans l'assistance Neero. Je peux vous aider avec les cartes virtuelles, les paiements et votre compte. Avez-vous une question à ce sujet ?"
+
+  utter_default:
+    - text: "Je n'ai pas bien compris. Pouvez-vous reformuler votre question ?"
+
+  utter_ask_phone_number:
+    - text: "Quel est le numéro de téléphone du destinataire ?"
+
+  utter_ask_amount:
+    - text: "Quel montant souhaitez-vous envoyer ?"
+
+  utter_confirm_transfert:
+    - text: "Vous souhaitez envoyer {amount} FCFA au {phone_number}. Confirmez-vous ?"
+
+  utter_transfert_success:
+    - text: "Transfert de {amount} FCFA vers {phone_number} initié avec succès !"
+
 
 session_config:
   session_expiration_time: 60

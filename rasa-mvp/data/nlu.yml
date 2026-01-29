@@ -1,110 +1,287 @@
 version: "3.1"
 
 nlu:
+- regex: phone_number
+  examples: |
+    - (\+237)?6[0-9]{8}
+
+- regex: amount
+  examples: |
+    - \b[0-9]{1,6}\b(?!\d)
 - intent: greet
   examples: |
-    - hey
+    - bonjour
+    - salut
     - hello
-    - hi
-    - hello there
-    - good morning
-    - good evening
-    - moin
-    - hey there
-    - let's go
-    - hey dude
-    - goodmorning
-    - goodevening
-    - good afternoon
+    - bonsoir
+    - hey
+    - coucou
+    - bonne journée
+    - salut à toi
+    - bonjour à vous
+    - hello là
+    - bjr
+    - slt
+    - yo
 
 - intent: goodbye
   examples: |
-    - cu
-    - good by
-    - cee you later
-    - good night
+    - au revoir
+    - à bientôt
+    - merci, c'est tout
     - bye
-    - goodbye
-    - have a nice day
-    - see you around
-    - bye bye
-    - see you later
+    - à plus
+    - bonne journée
+    - merci au revoir
+    - c'est bon merci
+    - je te laisse
+    - à la prochainej
+    - ciao
+    - salut à plus
+
+- intent: ask_help
+  examples: |
+    - aide
+    - que peux-tu faire ?
+    - comment peux-tu m'aider
+    - j'ai besoin d'aide
+    - tu fais quoi exactement
+    - quelles sont tes fonctions
+    - aide moi
+    - tu peux m'aider
+    - c'est quoi tes capacités
+    - qu'est-ce que tu sais faire
+    - help
+    - sos
+    - je suis perdu
 
 - intent: affirm
   examples: |
-    - yes
-    - y
-    - indeed
-    - of course
-    - that sounds good
+    - oui
+    - ouais
+    - exactement
+    - c'est ça
     - correct
+    - tout à fait
+    - absolument
+    - ok
+    - d'accord
+    - parfait
+    - yes
+    - yep
 
 - intent: deny
   examples: |
-    - no
-    - n
-    - never
-    - I don't think so
-    - don't like that
-    - no way
-    - not really
+    - non
+    - pas du tout
+    - non merci
+    - ce n'est pas ça
+    - absolument pas
+    - jamais
+    - nope
+    - nan
+    - pas vraiment
+    - je ne pense pas
 
-
-
-- intent: check_balances
+- intent: thank
   examples: |
-    - How much money do I have?
-    - what's my account balance?
-
-- intent: transfer_money
-  examples: |
-    - I want to transfer money to my savings account
-    - transfer money
-
-
-
-
-
-
-
-
-- intent: mood_great
-  examples: |
-    - perfect
-    - great
-    - amazing
-    - feeling like a king
-    - wonderful
-    - I am feeling very good
-    - I am great
-    - I am amazing
-    - I am going to save the world
-    - super stoked
-    - extremely good
-    - so so perfect
-    - so good
-    - so perfect
-
-- intent: mood_unhappy
-  examples: |
-    - my day was horrible
-    - I am sad
-    - I don't feel very well
-    - I am disappointed
-    - super sad
-    - I'm so sad
-    - sad
-    - very sad
-    - unhappy
-    - not good
-    - not very good
-    - extremly sad
-    - so saad
-    - so sad
+    - merci
+    - merci beaucoup
+    - thanks
+    - super merci
+    - je te remercie
+    - c'est gentil merci
+    - merci pour ton aide
+    - parfait merci
+    - excellent merci
 
 - intent: bot_challenge
   examples: |
-    - are you a bot?
-    - are you a human?
-    - am I talking to a bot?
-    - am I talking to a human?
+    - tu es un robot ?
+    - es-tu un humain
+    - je parle à une machine ?
+    - t'es un bot
+    - tu es une IA ?
+    - c'est un robot
+    - tu es réel ?
+
+- intent: what_is_virtual_card
+  examples: |
+    - c'est quoi une carte virtuelle ?
+    - carte virtuelle c'est quoi
+    - expliquer carte virtuelle
+    - qu'est-ce qu'une carte virtuelle
+    - définition carte virtuelle
+    - une carte virtuelle ça veut dire quoi
+    - c'est quoi le concept de carte virtuelle
+    - peux-tu m'expliquer ce qu'est une carte virtuelle
+    - je ne comprends pas ce qu'est une carte virtuelle
+    - carte virtuelle définition
+    - à quoi sert une carte virtuelle
+    - pourquoi une carte virtuelle
+
+- intent: create_virtual_card
+  examples: |
+    - comment créer une carte
+    - je veux une carte virtuelle
+    - créer une carte Neero
+    - comment obtenir une carte virtuelle
+    - je voudrais créer une carte
+    - création de carte virtuelle
+    - comment avoir une carte Neero
+    - procédure pour créer une carte
+    - étapes pour avoir une carte virtuelle
+    - je veux commander une carte
+    - obtenir une carte virtuelle
+    - comment faire pour avoir une carte
+    - générer une carte virtuelle
+    - nouvelle carte virtuelle
+
+- intent: card_usage
+  examples: |
+    - où utiliser la carte
+    - paiement en ligne possible ?
+    - ça marche sur netflix ?
+    - où est-ce que je peux utiliser ma carte
+    - la carte fonctionne sur Amazon ?
+    - je peux payer sur Spotify
+    - quels sites acceptent la carte
+    - ça marche pour les abonnements
+    - paiement sur Uber possible
+    - est-ce que ça marche sur AliExpress
+    - la carte est acceptée où
+    - sites compatibles avec la carte
+    - ça fonctionne sur quels sites
+    - je peux acheter sur Google Play
+
+- intent: fees_info
+  examples: |
+    - quels sont les frais
+    - combien ça coûte
+    - frais carte virtuelle
+    - c'est payant ?
+    - quel est le prix
+    - tarif de la carte
+    - y a-t-il des frais
+    - coût de création
+    - frais de transaction
+    - combien pour une carte
+    - prix d'une carte Neero
+    - est-ce gratuit
+    - frais mensuels
+    - commission sur les paiements
+
+- intent: payment_failed
+  examples: |
+    - paiement refusé
+    - ma carte ne passe pas
+    - transaction échouée
+    - mon paiement a été refusé
+    - la carte ne fonctionne pas
+    - erreur de paiement
+    - paiement rejeté
+    - impossible de payer
+    - la transaction n'a pas marché
+    - carte refusée
+    - échec du paiement
+    - mon achat n'est pas passé
+    - paiement bloqué
+    - la carte est déclinée
+
+- intent: check_balance
+  examples: |
+    - quel est mon solde
+    - combien il me reste
+    - solde de ma carte
+    - voir mon solde
+    - montant disponible
+    - combien j'ai sur ma carte
+    - consulter mon solde
+    - balance de ma carte
+    - argent restant sur la carte
+    - fonds disponibles
+
+- intent: reload_card
+  examples: |
+    - recharger ma carte
+    - comment ajouter de l'argent
+    - alimenter ma carte
+    - mettre de l'argent sur la carte
+    - rechargement de carte
+    - ajouter des fonds
+    - comment recharger
+    - je veux recharger ma carte
+    - créditer ma carte
+    - approvisionner ma carte
+
+- intent: card_security
+  examples: |
+    - ma carte est sécurisée ?
+    - c'est sûr votre carte
+    - sécurité de la carte
+    - mes données sont protégées
+    - risque de fraude
+    - la carte est fiable
+    - protection des paiements
+    - est-ce que c'est sécurisé
+    - vol de carte possible
+    - données bancaires sécurisées
+
+- intent: contact_support
+  examples: |
+    - parler à un humain
+    - contacter le support
+    - je veux un conseiller
+    - assistance humaine
+    - service client
+    - comment contacter Neero
+    - parler à quelqu'un
+    - joindre un agent
+    - numéro de téléphone
+    - email du support
+
+- intent: ask_how
+  examples: |
+    - comment faire
+    - comment faire ?
+    - comment je fais
+    - comment ça marche
+    - explique moi comment
+    - montre moi comment
+    - et comment je fais ça
+    - de quelle manière
+    - quelle est la procédure
+    - c'est quoi les étapes
+    - peux-tu m'expliquer
+    - donne moi les détails
+    - je fais comment
+
+- intent: out_of_scope
+  examples: |
+    - quel temps fait-il
+    - raconte une blague
+    - quelle heure est-il
+    - qui est le président
+    - parle-moi de toi
+    - tu aimes quoi
+    - c'est quoi la vie
+    - football
+    - musique
+
+- intent: transfert_mobile_money
+  examples: |
+    - je veux faire un transfert
+    - envoyer de l'argent
+    - transfert mobile money
+    - faire un transfert
+    - je veux envoyer [5000](amount) au [655123456](phone_number)
+    - envoyer [10000](amount) à [699000000](phone_number)
+    - transfert de [50000](amount) vers [+237655123456](phone_number)
+    - je veux transférer [25000](amount)
+    - envoyer de l'argent au [677889900](phone_number)
+    - faire un virement de [15000](amount) au [690112233](phone_number)
+    - transfert [5000](amount) [655443322](phone_number)
+    - envoyer [2000](amount) au [691234567](phone_number)
+    - je veux envoyer de l'argent
+    - transfert vers [656778899](phone_number)
+    - envoie [100000](amount) francs au [699112233](phone_number)

@@ -1,0 +1,44 @@
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Rasa generated files
+models/
+.cache/
+.graph/
+logs/
+events.db
+tracker.db
+
+
+.rasa/
+
+# Rasa local configs / secrets
+endpoints.yml
+credentials.yml
+.env
+*.env
+
+# IDE / OS
+.vscode/
+.idea/
+*.iml
+.DS_Store
+Thumbs.db
+
+# Testing / coverage
+.coverage
+htmlcov/
+.pytest_cache/
+
+# Temp / misc
+*.log
+*.tmp

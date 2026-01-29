@@ -1,13 +1,51 @@
 version: "3.1"
 
 rules:
+- rule: Salutation
+  steps:
+  - intent: greet
+  - action: utter_greet
 
-- rule: Say goodbye anytime the user says goodbye
+- rule: Au revoir
   steps:
   - intent: goodbye
   - action: utter_goodbye
 
-- rule: Say 'I am a bot' anytime the user challenges
+- rule: Remerciement
+  steps:
+  - intent: thank
+  - action: utter_thank
+
+- rule: Bot challenge
   steps:
   - intent: bot_challenge
   - action: utter_iamabot
+
+- rule: Demande aide
+  steps:
+  - intent: ask_help
+  - action: utter_help
+
+- rule: Hors sujet
+  steps:
+  - intent: out_of_scope
+  - action: utter_out_of_scope
+
+- rule: Contact support
+  steps:
+  - intent: contact_support
+  - action: utter_contact_support
+
+- rule: Fallback
+  steps:
+  - intent: nlu_fallback
+  - action: utter_default
+
+- rule: Transfert complet avec slots
+  condition:
+  - slot_was_set:
+    - amount
+    - phone_number
+  steps:
+  - intent: transfert_mobile_money
+  - action: utter_confirm_transfert
