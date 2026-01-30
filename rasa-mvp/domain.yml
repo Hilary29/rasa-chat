@@ -104,8 +104,11 @@ responses:
   utter_confirm_transfert:
     - text: "Vous souhaitez envoyer {amount} FCFA au {phone_number}. Confirmez-vous ?"
 
-  utter_transfert_success:
-    - text: "Transfert de {amount} FCFA vers {phone_number} initié avec succès !"
+  utter_transfert_init:
+    - text: "Transfert de {amount} FCFA vers {phone_number} initié.\nVotre code vous sera demandé pour valider la transaction."
+
+  utter_transfert_deny:
+    - text: "Transfert de {amount} FCFA vers {phone_number} annulé. Si vous souhaitez effectuer un autre transfert, n'hésitez pas à me le faire savoir."
 
 
 session_config:

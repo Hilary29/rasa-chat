@@ -49,3 +49,21 @@ rules:
   steps:
   - intent: transfert_mobile_money
   - action: utter_confirm_transfert
+
+- rule: Confirmation transfert mobile money
+  condition:
+  - slot_was_set:
+    - amount
+    - phone_number
+  steps:
+  - intent: affirm
+  - action: utter_transfert_init
+
+- rule: Annulation transfert mobile money
+  condition:
+  - slot_was_set:
+    - amount
+    - phone_number
+  steps:
+  - intent: deny
+  - action: utter_transfert_deny

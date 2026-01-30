@@ -3,11 +3,11 @@ version: "3.1"
 nlu:
 - regex: phone_number
   examples: |
-    - (\+237)?6[0-9]{8}
+    - (\+?237)?6[0-9]{8}
 
 - regex: amount
   examples: |
-    - \b[0-9]{1,6}\b(?!\d)
+    - \b[0-9]{1,8}\b(?!\d)
 - intent: greet
   examples: |
     - bonjour
@@ -229,6 +229,7 @@ nlu:
 
 - intent: contact_support
   examples: |
+    - discuter avec un agent
     - parler à un humain
     - contacter le support
     - je veux un conseiller
@@ -237,6 +238,8 @@ nlu:
     - comment contacter Neero
     - parler à quelqu'un
     - joindre un agent
+    - redirige moi vers un humain
+    - redirige moi vers un agent
     - numéro de téléphone
     - email du support
 

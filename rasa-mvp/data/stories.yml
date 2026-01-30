@@ -139,16 +139,6 @@ stories:
   - intent: ask_how
   - action: utter_ask_clarification
 
-- story: Transfert mobile money complet
-  steps:
-  - intent: transfert_mobile_money
-    entities:
-    - amount
-    - phone_number
-  - action: utter_confirm_transfert
-  - intent: affirm
-  - action: utter_transfert_success
-
 - story: Transfert sans numéro
   steps:
   - intent: transfert_mobile_money
@@ -167,13 +157,3 @@ stories:
   steps:
   - intent: transfert_mobile_money
   - action: utter_ask_amount
-
-- story: Transfert annulé
-  steps:
-  - intent: transfert_mobile_money
-    entities:
-    - amount
-    - phone_number
-  - action: utter_confirm_transfert
-  - intent: deny
-  - action: utter_deny

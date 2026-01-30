@@ -17,6 +17,7 @@ pipeline:
   - name: DIETClassifier
     epochs: 100
     constrain_similarities: true
+    entity_recognition: false 
   - name: FallbackClassifier
     threshold: 0.4
     ambiguity_threshold: 0.1
