@@ -31,6 +31,11 @@ rules:
   - intent: out_of_scope
   - action: utter_out_of_scope
 
+- rule: Aide carte virtuelle
+  steps:
+  - intent: ask_help_card
+  - action: utter_ask_help_card
+
 - rule: Contact support
   steps:
   - intent: contact_support

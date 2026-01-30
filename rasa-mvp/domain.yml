@@ -20,6 +20,7 @@ intents:
   - ask_how
   - out_of_scope
   - transfert_mobile_money
+  - ask_help_card
 
 entities:
   - phone_number
@@ -40,6 +41,11 @@ slots:
 responses:
   utter_greet:
     - text: "Bonjour ! Je suis l'assistant Neero. Comment puis-je vous aider ?"
+      buttons:
+        - title: "Transfert"
+          payload: "/transfert_mobile_money"
+        - title: "Carte"
+          payload: "/ask_help_card"
 
   utter_goodbye:
     - text: "Au revoir ! N'hésitez pas à revenir si vous avez d'autres questions."
@@ -92,6 +98,18 @@ responses:
   utter_out_of_scope:
     - text: "Désolé, je suis spécialisé dans l'assistance Neero. Je peux vous aider avec les cartes virtuelles, les paiements et votre compte. Avez-vous une question à ce sujet ?"
 
+  utter_ask_help_card:
+    - text: "Que souhaitez-vous savoir sur la carte virtuelle Neero ?"
+      buttons:
+        - title: "C'est quoi une carte virtuelle ?"
+          payload: "/what_is_virtual_card"
+        - title: "Créer une carte"
+          payload: "/create_virtual_card"
+        - title: "Où utiliser ma carte ?"
+          payload: "/card_usage"
+        - title: "Frais et tarifs"
+          payload: "/fees_info"
+
   utter_default:
     - text: "Je n'ai pas bien compris. Pouvez-vous reformuler votre question ?"
 
@@ -103,6 +121,11 @@ responses:
 
   utter_confirm_transfert:
     - text: "Vous souhaitez envoyer {amount} FCFA au {phone_number}. Confirmez-vous ?"
+      buttons:
+        - title: "Confirmer"
+          payload: "/affirm"
+        - title: "Annuler"
+          payload: "/deny"
 
   utter_transfert_init:
     - text: "Transfert de {amount} FCFA vers {phone_number} initié.\nVotre code vous sera demandé pour valider la transaction."
