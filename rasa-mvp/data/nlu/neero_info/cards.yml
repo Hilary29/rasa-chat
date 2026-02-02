@@ -1,0 +1,78 @@
+version: "3.1"
+
+nlu:
+
+- intent: card_security
+  examples: |
+    - ma carte est sécurisée ?
+    - c'est sûr votre carte
+    - sécurité de la carte
+    - mes données sont protégées
+    - risque de fraude
+    - la carte est fiable
+    - protection des paiements
+    - est-ce que c'est sécurisé
+    - vol de carte possible
+    - données bancaires sécurisées
+
+- intent: reload_card
+  examples: |
+    - recharger ma carte
+    - comment ajouter de l'argent
+    - alimenter ma carte
+    - mettre de l'argent sur la carte
+    - rechargement de carte
+    - ajouter des fonds
+    - comment recharger
+    - je veux recharger ma carte
+    - créditer ma carte
+    - approvisionner ma carte
+
+- intent: what_is_virtual_card
+  examples: |
+    - c'est quoi une carte virtuelle ?
+    - carte virtuelle c'est quoi
+    - expliquer carte virtuelle
+    - qu'est-ce qu'une carte virtuelle
+    - définition carte virtuelle
+    - une carte virtuelle ça veut dire quoi
+    - c'est quoi le concept de carte virtuelle
+    - peux-tu m'expliquer ce qu'est une carte virtuelle
+    - je ne comprends pas ce qu'est une carte virtuelle
+    - carte virtuelle définition
+    - à quoi sert une carte virtuelle
+    - pourquoi une carte virtuelle
+
+- intent: create_virtual_card
+  examples: |
+    - comment créer une carte
+    - je veux une carte virtuelle
+    - créer une carte Neero
+    - comment obtenir une carte virtuelle
+    - je voudrais créer une carte
+    - création de carte virtuelle
+    - comment avoir une carte Neero
+    - procédure pour créer une carte
+    - étapes pour avoir une carte virtuelle
+    - je veux commander une carte
+    - obtenir une carte virtuelle
+    - comment faire pour avoir une carte
+    - générer une carte virtuelle
+    - nouvelle carte virtuelle
+
+- intent: card_usage
+  examples: |
+    - où utiliser la carte
+    - paiement en ligne possible ?
+    - ça marche sur netflix ?
+    - où est-ce que je peux utiliser ma carte
+    - la carte fonctionne sur Amazon ?
+    - je peux payer sur Spotify
+    - quels sites acceptent la carte
+    - ça marche pour les abonnements
+    - paiement sur Uber possible
+    - est-ce que ça marche sur AliExpress
+    - la carte est acceptée où
+    - sites compatibles avec la carte
+    - ça fonctionne sur quels sites
+    - je peux acheter sur Google Play

@@ -25,11 +25,14 @@ intents:
   - ask_help_card
 
 entities:
+  - name
   - phone_number
   - amount
   - neero_id
 
 slots:
+  name:
+    type: text
   phone_number:
     type: text
     mappings:

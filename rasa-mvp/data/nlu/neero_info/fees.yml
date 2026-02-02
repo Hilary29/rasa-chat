@@ -1,0 +1,19 @@
+version: "3.1"
+
+nlu:
+- intent: fees_info
+  examples: |
+    - quels sont les frais
+    - combien ça coûte
+    - frais carte virtuelle
+    - c'est payant ?
+    - quel est le prix
+    - tarif de la carte
+    - y a-t-il des frais
+    - coût de création
+    - frais de transaction
+    - combien pour une carte
+    - prix d'une carte Neero
+    - est-ce gratuit
+    - frais mensuels
+    - commission sur les paiements

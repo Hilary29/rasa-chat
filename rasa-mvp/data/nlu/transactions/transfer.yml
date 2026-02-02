@@ -1,0 +1,61 @@
+version: "3.1"
+
+nlu:
+- intent: transfert
+  examples: |
+    - je veux faire un transfert
+    - transfert
+    - je souhaite envoyer de l'argent
+    - envoyer de l'argent
+    - faire un virement
+    - je veux transférer de l'argent
+    - effectuer un transfert
+    - je veux envoyer [10000](amount)
+    - transfert de [5000](amount)
+    - envoyer [25000](amount)
+    - je veux envoyer de l'argent
+    - faire un transfert
+    - virement
+    - je veux faire un virement
+
+- intent: mobile_money_transfert
+  examples: |
+    - je veux faire un transfert mobile money
+    - envoyer de l'argent par mobile money
+    - transfert orange money
+    - transfert mtn momo
+    - transfert mobile money
+    - je veux envoyer [5000](amount) au [655123456](phone_number)
+    - je veux envoyer [5000](amount) au [655123456](phone_number) par mobile money
+    - envoyer [10000](amount) à [699000000](phone_number) via mobile money
+    - transfert mobile de [50000](amount) vers [+237655123456](phone_number)
+    - je veux transférer [25000](amount) via mobile money
+    - envoyer de l'argent au [677889900](phone_number) par momo
+    - faire un virement mobile de [15000](amount) au [690112233](phone_number)
+    - transfert momo [5000](amount) [655443322](phone_number)
+    - envoyer [2000](amount) au [691234567](phone_number) orange money
+    - transfert mobile vers [656778899](phone_number)
+    - envoie [100000](amount) francs au [699112233](phone_number) par mobile money
+    - mobile money
+    - orange money
+    - mtn mobile money
+    - momo
+
+- intent: neero_transfert
+  examples: |
+    - envoyer [5000](amount) à [@john_doe](neero_id)
+    - je veux faire un transfert neero
+    - envoyer de l'argent sur neero
+    - transfert neero
+    - transfert wallet neero
+    - transfert de [10000](amount) vers [@marie123](neero_id) sur neero
+    - je veux envoyer [25000](amount) à l'utilisateur neero [@paul_k](neero_id)
+    - envoyer de l'argent à [@user456](neero_id) via neero
+    - transfert interne à [@alice](neero_id)
+    - envoyer [50000](amount) wallet to wallet
+    - transfert neero vers [@bob](neero_id)
+    - virement neero de [15000](amount) à [@sarah_m](neero_id)
+    - wallet neero
+    - transfert wallet
+    - envoyer à [@pierre99](neero_id) sur neero
+    - je veux transférer [30000](amount) à [@martin](neero_id) via neero
