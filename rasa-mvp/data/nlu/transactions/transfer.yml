@@ -26,7 +26,7 @@ nlu:
     - transfert mtn momo
     - transfert mobile money
     - je veux envoyer [5000](amount) au [655123456](phone_number)
-    - je veux envoyer [5000](amount) au [655123456](phone_number) par mobile money
+    - je veux envoyer [5000](amount) [dollars](currency) au [655123456](phone_number) par mobile money
     - envoyer [10000](amount) à [699000000](phone_number) via mobile money
     - transfert mobile de [50000](amount) vers [+237655123456](phone_number)
     - je veux transférer [25000](amount) via mobile money
@@ -35,7 +35,7 @@ nlu:
     - transfert momo [5000](amount) [655443322](phone_number)
     - envoyer [2000](amount) au [691234567](phone_number) orange money
     - transfert mobile vers [656778899](phone_number)
-    - envoie [100000](amount) francs au [699112233](phone_number) par mobile money
+    - envoie [100000](amount) [francs](currency) au [699112233](phone_number) par mobile money
     - mobile money
     - orange money
     - mtn mobile money
@@ -49,13 +49,13 @@ nlu:
     - transfert neero
     - transfert wallet neero
     - transfert de [10000](amount) vers [@marie123](neero_id) sur neero
-    - je veux envoyer [25000](amount) à l'utilisateur neero [@paul_k](neero_id)
+    - je veux envoyer [25000](amount) [XAF](currency) à l'utilisateur neero [@paul_k](neero_id)
     - envoyer de l'argent à [@user456](neero_id) via neero
     - transfert interne à [@alice](neero_id)
     - envoyer [50000](amount) wallet to wallet
     - transfert neero vers [@bob](neero_id)
-    - virement neero de [15000](amount) à [@sarah_m](neero_id)
+    - virement neero de [15000](amount) [EUR](currency) à [@sarah_m](neero_id)
     - wallet neero
     - transfert wallet
     - envoyer à [@pierre99](neero_id) sur neero
-    - je veux transférer [30000](amount) à [@martin](neero_id) via neero
+    - je veux transférer [30000](amount) à [@mar0abe4h](neero_id) via neero

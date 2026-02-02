@@ -1,0 +1,8 @@
+version: "3.1"
+lookup: card_type
+examples: |
+  - physique
+  - carte physique
+  - virtual
+  - virtuelle
+  - carte virtuelle

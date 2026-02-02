@@ -1,3 +1,18 @@
 version: "3.1"
 
 nlu:
+- intent: contact_support
+  examples: |
+    - discuter avec un agent
+    - parler à un humain
+    - contacter le support
+    - je veux un conseiller
+    - assistance humaine
+    - service client
+    - comment contacter Neero
+    - parler à quelqu'un
+    - joindre un agent
+    - redirige moi vers un humain
+    - redirige moi vers un agent
+    - numéro de téléphone
+    - email du support

@@ -44,6 +44,6 @@ data/stories/ → parcours conversationnels
 
 data/rules/ → comportements fixes
 
-data/lookups/ → données métier
+data/lookups/ → données métier, valeurs connues utilisées pour aider l’extraction d’entités
 
-actions/api/
+actions/api/ → communication avec les services externes

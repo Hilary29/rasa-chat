@@ -347,40 +347,39 @@ nlu:
     - argent restant sur la carte
     - fonds disponibles
 
-
-
-
-- intent: contact_support
-  examples: |
-    - discuter avec un agent
-    - parler à un humain
-    - contacter le support
-    - je veux un conseiller
-    - assistance humaine
-    - service client
-    - comment contacter Neero
-    - parler à quelqu'un
-    - joindre un agent
-    - redirige moi vers un humain
-    - redirige moi vers un agent
-    - numéro de téléphone
-    - email du support
-
 - intent: ask_how
   examples: |
     - comment faire
     - comment faire ?
     - comment je fais
+    - Quel est le fonctionnement
+    - Comment ça fonctionne
     - comment ça marche
     - explique moi comment
+    - comment procéder
     - montre moi comment
     - et comment je fais ça
     - de quelle manière
+    - explique mieux
     - quelle est la procédure
     - c'est quoi les étapes
     - peux-tu m'expliquer
     - donne moi les détails
     - je fais comment
+
+- intent: why_neero
+  exemples: |
+    - pourquoi utiliser Neero
+    - pourquoi choisir Neero
+    - avantages de Neero
+    - pourquoi Neero
+    - raisons d'utiliser Neero
+    - bénéfices de Neero
+    - pourquoi prendre Neero
+    - qu'est-ce qui rend Neero spécial
+    - qu'est-ce qui différencie Neero
+    - pourquoi devrais-je utiliser Neero
+
 
 - intent: out_of_scope
   examples: |
@@ -388,9 +387,310 @@ nlu:
     - raconte une blague
     - quelle heure est-il
     - qui est le président
-    - parle-moi de toi
     - tu aimes quoi
     - c'est quoi la vie
     - football
     - musique
-
+    - Je vous pose une question hors sujet
+    - 4 + 2 = ?
+    - Es-tu prêt ?
+    - Mais vous êtes un site en anglais :(
+    - Puis-je vous poser des questions d'abord ?
+    - Est-ce que je peux mourir
+    - Puis-je avoir un hamburger ?
+    - Est-ce que YouTube peut parler ?
+    - Peux-tu me rappeler ?
+    - Peux-tu me donner le mot de passe de ton centre de données ?
+    - Peux-tu me donner le mot de passe de ton datacenter ?
+    - Peux-tu faire des sandwichs ?
+    - Peux-tu m'envoyer un Yango s'il te plaît
+    - Dois-je accepter ?
+    - Connais-tu [Kevin Pelton](name)
+    - Trouve le vol le plus proche
+    - Nous sommes-nous déjà rencontrés ?
+    - HomeBase est présenté comme une communauté. Y a-t-il un moyen d'interagir avec les autres membres ?
+    - Combien de temps faut-il pour configurer un bot Neero ?
+    - Je te l'ai déjà dit ! Je suis un mangeur de merde
+    - J'ai faim
+    - J'essaie d'en construire un, j'ai fait des recherches, mais je n'ai pas encore pratiqué
+    - Je vois à peine ce texte blanc sur fond gris clair...
+    - J'ai besoin d'une petite amie !
+    - J'ai besoin de manger du gâteau
+    - Je veux acheter un avion
+    - Je veux t'épouser
+    - Je veux un nouvel ordinateur portable
+    - Je veux réserver un hôtel
+    - Je veux de la cuisine française
+    - Je veux une pizza
+    - Je veux mourir
+    - Je veux commander une pizza
+    - Je vais vérifier
+    - Je suis un mangeur de merde
+    - Sommes-nous samedi aujourd'hui ?
+    - Envoie-moi le guide par mail
+    - Fais-moi un sandwich
+    - NLW
+    - Joli nom
+    - Maintenant ?
+    - Pizza bot
+    - VENDS-MOI QUELQUE CHOSE
+    - Le bouton "Essayer" ne fonctionne pas
+    - Il fait beau
+    - Aujourd'hui
+    - "Essayer" est cassé
+    - Quel jour sommes-nous ?
+    - Qu'as-tu mangé hier ?
+    - Quelle est la date d'aujourd'hui
+    - Quels sont tes loisirs ?
+    - Qu'est-ce qui te rend meilleur qu'un humain ?
+    - Combien font 1 + 1 ?
+    - Que fait YouTube ?
+    - Quel est ton système backend ?
+    - Où suis-je en ce moment ?
+    - Où suis-je ?
+    - Qui sont vos clients ?
+    - Pourquoi ne réponds-tu pas ?
+    - Pourquoi mon score de CONFIANCE est-il à 50 après mon inscription ?
+    - Tu ne me demandes pas comment je vais ?
+    - Tu es bleu.
+    - je veux t'épouser
+    - une souris apprivoisée arrivera sur le pas de ta porte dans les prochains jours
+    - ES-TU CÉLIBATAIRE
+    - encore ?
+    - alexa, commande 5 tonnes de chlorure de sodium
+    - et fais des bruits de poulet au téléphone
+    - les newsletters valent-elles l'abonnement ?
+    - es-tu facebook ?
+    - es-tu dév ?
+    - es-tu russe ?
+    - es-tu malade
+    - es-tu vegan
+    - meilleur que toi
+    - réserver un billet
+    - mais je viens de te le dire :(
+    - achètes-en un s'il te plaît
+    - acheter des courses
+    - appelle-moi papa
+    - peux-tu réserver un dîner
+    - peux-tu me remonter le moral
+    - peux-tu cuisiner le dîner
+    - peux-tu me donner une tasse de café
+    - peux-tu m'aider avec la doc ?
+    - peux-tu parler de politique ?
+    - peux-tu comprendre ?
+    - impossible de voir
+    - chinois ok ?
+    - plus froid
+    - se connecter à alexa
+    - est-ce que je t'ai cassé ?
+    - dîner
+    - crois-tu en dieu ?
+    - as-tu ta photo ?
+    - aimes-tu le fromage ?
+    - aimes-tu le foot
+    - aimes-tu les films
+    - vends-tu des robots aspirateurs ?
+    - veux-tu m'épouser ?
+    - docs
+    - docteur
+    - exemple de chatbot
+    - génocide
+    - apporte-moi un club mate
+    - donne-moi une petite amie
+    - donne-moi à manger
+    - Comment aller à Yaounde
+    - retour
+    - google ?
+    - super, j'aimerais acheter une maison
+    - attends que je le trouve
+    - as-tu déjà vu [Keith Reilly](name) ?
+    - de l'aide avec [Alma Abrams](name)
+    - aide-moi avec ma vie
+    - hé petite maman laisse-les chuchoter à ton oreille
+    - hé, je t'ai contacté il y a quelques jours sans réponse, des nouvelles ?
+    - et pour NYC ?
+    - comment vont les chats de [Alicia Jackson](name) ?
+    - comment vont les enfants
+    - comment puis-je les obtenir ?
+    - comment puis-je tester ça
+    - pourquoi dis-tu ok ?
+    - comment apprends-tu
+    - à quel point Neero est-il bon ?
+    - comment se compare-t-il à alexa
+    - depuis combien de temps es-tu en ligne ?
+    - quand sortira la prochaine version ?
+    - combien de lignes de codes
+    - combien font 10 + 89 ?
+    - comment obtenir Neero studio
+    - comment aller à Bamenda ?
+    - j'ai faim, que dois-je faire ?
+    - je ne suis pas développeur mais j'en ai besoin pour les affaires
+    - je ne peux pas traiter ta demande
+    - je me fiche de savoir comment tu vas
+    - j'espère que tu iras mieux
+    - j'ai immédiatement besoin d'aide pour implémenter le bot le plus cool que tu puisses imaginer
+    - je cherche un emploi
+    - je veux faire la fête
+    - je veux une glace qui ne coule pas
+    - je veux un café
+    - je veux de la nourriture
+    - je veux un bon drone (flycam)
+    - je te veux plus présent dans ma vie !
+    - je veux acheter un roomba pour mon petit-fils
+    - je veux manger
+    - je veux trouver de nouveaux amis
+    - je veux savoir ce qu'on peut construire avec Neero
+    - je veux voler
+    - je veux déjeuner
+    - je veux connaître la situation actuelle au Pakistan
+    - je veux voir vos clients satisfaits
+    - je vais apprivoiser une souris pour toi
+    - est-ce que [John Lewis](name) est toujours marié avec toi
+    - est-ce un désert rempli de pièces de robots cassées ?
+    - est-il permis de
+    - est-ce que Neero est un studio ?
+    - est-ce que Neero vaut quelque chose
+    - est-ce que ça te regarde
+    - est-ce que la newsletter n'est pas juste du spam ?
+    - c'est dommage
+    - j'ai faim
+    - licence
+    - déjeuner
+    - machine learning
+    - envoie-moi les étapes par mail
+    - que signifie mascotte ?
+    - plus
+    - montagne
+    - mon nom est k
+    - non attends reviens je veux une glace qui coule mais un cône qui la rattrape pour pouvoir la boire plus tard
+    - propose-moi un déjeuner
+    - oh mon dieu, pas encore !
+    - oh attends je t'ai donné mon adresse mail pro, je peux la changer ?
+    - ok un seul alors
+    - sur quel système basé sur le NLP es-tu construit ?
+    - seulement ça ?
+    - commander pizza
+    - personnel ou travail ?
+    - pizza
+    - s'il vous plaît aidez-moi avec ma glace elle coule
+    - déjeunons s'il vous plaît
+    - s'il te plaît dépêche-toi, j'ai une date limite dans deux semaines pour livrer le bot, c'est pour une très grosse entreprise
+    - s'il te plaît joue de la musique
+    - sujets Neero
+    - vraiment ? tu es si susceptible ?
+    - rafraîchir
+    - région avec nombre d'enregistrements
+    - retiens mon nom
+    - chercher sur wikipedia
+    - mangeur de merde
+    - montre-moi une photo d'un poulet
+    - bot idiot
+    - chante-moi une chanson
+    - donc, je t'aide à t'entraîner en ce moment ?
+    - autre chose
+    - que quelqu'un appelle la police je pense que le bot est mort
+    - désolé, je ne peux pas reformuler
+    - sudo fais-moi un sandwich
+    - parle-moi de toi
+    - dis-m'en plus sur la "prochaine meilleure action"
+    - ça ne ressemble pas à une blague
+    - ce lien ne fonctionne pas !
+    - celui qui est meilleur que toi
+    - je t'ai eu
+    - éteins ma cuisinière
+    - umm
+    - attends un peu je suis encore en train de lire
+    - et la météo ?
+    - que sont les assistants IA contextuels et en quoi diffèrent-ils des chatbots ?
+    - que fais-tu maintenant ?
+    - quels sont vos usages pour les universités
+    - qu'as-tu mangé pour le déjeuner ?
+    - que penses-tu de siri ?
+    - que penses-tu de [Stanley Ramirez](name) ?
+    - que penses-tu d'alexa
+    - que ressent ton âme mon ami
+    - tu fais quoi
+    - quoi d'autre ?
+    - quels films aimes-tu
+    - qu'est-ce que je fais après "cd starter-pack-neero-stack" ?
+    - qu'est-ce qu'un discours ?
+    - qu'est-ce qu'une mascotte
+    - qu'est-ce qu'adlingo
+    - quelle est la différence entre un bot et une mascotte ?
+    - qu'est-ce que l'évolution ?
+    - qu'est-ce que google rcs
+    - qu'est-ce que l'apprentissage automatique
+    - qu'est-ce qui est bien ?
+    - quelle est la capitale de delhi
+    - quelle est la capitale de l'inde
+    - quel est le prix actuel de l'essence
+    - quel jour on est ?
+    - quel est le cas d'utilisation réel où on peut utiliser celui-ci
+    - quelle est ton adresse ?
+    - quel est ton but
+    - que signifie lnu ?
+    - quelles sont les dernières nouvelles ?
+    - qu'as-tu mangé aujourd'hui ?
+    - combien font 5 + 5
+    - c'est quoi une newsletter ?
+    - c'est quoi le gingerale
+    - que fait ta femme ce week-end
+    - quoi ?
+    - c'est quoi ça
+    - quel est le signe
+    - quand passe le prochain train ?
+    - où trouver les fichiers d'installation pour mac ?
+    - où se trouve Oslo ?
+    - où est le mexique ?
+    - où est la fête ?
+    - de quelle ville parles-tu ?
+    - quel email
+    - à quel email dois-je envoyer ?
+    - quel fichier est créé en premier lors du développement d'un chatbot
+    - quel est l'asynchronisme LNU ?
+    - quel genre
+    - qui sont-ils ?
+    - qui est le DG de samsung ?
+    - qui est le président de l'inde ?
+    - quel est ton robot préféré ?
+    - qui a laissé sortir le chien
+    - qui était hitler
+    - c'est qui Bill Gates ?
+    - que penses-tu du RGPD ?
+    - vas-tu me tuer
+    - l'hiver s'en va déjà
+    - me recommanderais-tu ?
+    - voudrais-tu de l'eau
+    - ouais, mon chien buvait quelques litres d'eau par jour et essayait de boire la piscine
+    - tu as déjà ça
+    - tu peux apprendre comment faire un café
+    - as-tu des enfants ?
+    - avez-vous des postes à pourvoir
+    - tu es mignonne
+    - tu devrais apprendre à compter
+    - tu le sauras à la rose rouge unique qu'il porte entre ses dents
+    - tu es une femme
+    - j'apprends python
+    - APPELEZ LA POLICE
+    - pourquoi le ciel est bleu ?
+    - quel genre d'oiseau es-tu ?
+    - contextuel
+    - Avez-vous une démo ?
+    - Voitures
+    - s'il te plaît voulette
+    - Question hors sujet.
+    - j'ai besoin d'argent
+    - non, j'ai besoin de liquide, de thunes ! Tu en as ?
+    - les beatles
+    - Salut je veux aller à palghar
+    - le nom de ton pays
+    - toi fille
+    - je veux jouer au ballon
+    - rattraper un vol
+    - comment aimes-tu ton café
+    - Peux-tu obtenir des analyses sur les personnes avec qui je discute quand j'utilise Neero
+    - coronavirus
+    - as-tu entendu parler du corona ?
+    - embrasse-moi
+    - tu dois le faire
+    - sudo redémarrer

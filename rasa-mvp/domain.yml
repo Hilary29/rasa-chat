@@ -1,4 +1,7 @@
 version: "3.1"
+session_config:
+  session_expiration_time: 480
+  carry_over_slots_to_new_session: true
 
 intents:
   - greet
@@ -19,16 +22,36 @@ intents:
   - contact_support
   - ask_how
   - out_of_scope
-  - transfert
-  - mobile_money_transfert
-  - neero_transfert
+  - transfert:
+      use_entities:
+      - amount
+      - phone_number
+      - neero_id
+      - currency
+  - mobile_money_transfert:
+      use_entities:
+      - amount
+      - phone_number
+      - neero_id
+      - currency
+  - neero_transfert:
+      use_entities:
+      - amount
+      - phone_number
+      - neero_id
+      - currency
   - ask_help_card
+  - smalltalk
+  - why_neero
+  
 
 entities:
   - name
   - phone_number
   - amount
+  - currency
   - neero_id
+  - card_type
 
 slots:
   name:
@@ -43,11 +66,28 @@ slots:
     mappings:
       - type: from_entity
         entity: amount
+  currency:
+    type: categorical
+    values:
+      - XAF
+      - EUR
+      - USD
+    mappings:
+      - type: from_entity
+        entity: currency
   neero_id:
     type: text
     mappings:
       - type: from_entity
         entity: neero_id
+  card_type:
+    type: categorical
+    values:
+      - physique
+      - virtuelle
+    mappings:
+      - type: from_entity
+        entity: card_type
 
 responses:
   utter_greet:
@@ -110,7 +150,7 @@ responses:
     - text: "Désolé, je suis spécialisé dans l'assistance Neero. Je peux vous aider avec les cartes virtuelles, les paiements et votre compte. Avez-vous une question à ce sujet ?"
 
   utter_ask_help_card:
-    - text: "Que souhaitez-vous savoir sur la carte virtuelle Neero ?"
+    - text: "Que souhaitez-vous savoir sur la carte Neero ?"
       buttons:
         - title: "C'est quoi une carte virtuelle ?"
           payload: "/what_is_virtual_card"
@@ -170,6 +210,3 @@ responses:
     - text: "Transfert Neero de {amount} FCFA vers {neero_id} annulé."
 
 
-session_config:
-  session_expiration_time: 60
-  carry_over_slots_to_new_session: true
