@@ -46,13 +46,18 @@ rules:
   - intent: nlu_fallback
   - action: utter_default
 
-- rule: Transfert complet avec slots
+- rule: Transfert générique - demander type
+  steps:
+  - intent: transfert
+  - action: utter_ask_transfer_type
+
+- rule: Mobile Money transfert complet avec slots
   condition:
   - slot_was_set:
     - amount
     - phone_number
   steps:
-  - intent: transfert_mobile_money
+  - intent: mobile_money_transfert
   - action: utter_confirm_transfert
 
 - rule: Confirmation transfert mobile money
@@ -72,3 +77,30 @@ rules:
   steps:
   - intent: deny
   - action: utter_transfert_deny
+
+- rule: Neero transfert complet avec slots
+  condition:
+  - slot_was_set:
+    - amount
+    - neero_id
+  steps:
+  - intent: neero_transfert
+  - action: utter_confirm_neero_transfert
+
+- rule: Confirmation neero transfert
+  condition:
+  - slot_was_set:
+    - amount
+    - neero_id
+  steps:
+  - intent: affirm
+  - action: utter_neero_transfert_init
+
+- rule: Annulation neero transfert
+  condition:
+  - slot_was_set:
+    - amount
+    - neero_id
+  steps:
+  - intent: deny
+  - action: utter_neero_transfert_deny

@@ -19,12 +19,15 @@ intents:
   - contact_support
   - ask_how
   - out_of_scope
-  - transfert_mobile_money
+  - transfert
+  - mobile_money_transfert
+  - neero_transfert
   - ask_help_card
 
 entities:
   - phone_number
   - amount
+  - neero_id
 
 slots:
   phone_number:
@@ -37,13 +40,18 @@ slots:
     mappings:
       - type: from_entity
         entity: amount
+  neero_id:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: neero_id
 
 responses:
   utter_greet:
     - text: "Bonjour ! Je suis l'assistant Neero. Comment puis-je vous aider ?"
       buttons:
         - title: "Transfert"
-          payload: "/transfert_mobile_money"
+          payload: "/transfert"
         - title: "Carte"
           payload: "/ask_help_card"
 
@@ -69,10 +77,10 @@ responses:
     - text: "Une carte virtuelle Neero est une carte de paiement dématérialisée. Elle possède un numéro, une date d'expiration et un CVV, comme une carte classique, mais existe uniquement en version numérique. Idéale pour les achats en ligne en toute sécurité."
 
   utter_create_virtual_card:
-    - text: "Pour créer une carte virtuelle Neero :\n1. Téléchargez l'application Neero\n2. Créez votre compte\n3. Vérifiez votre identité\n4. Cliquez sur 'Créer une carte'\n\nVotre carte sera générée instantanément !"
+    - text: "Pour obtenir votre carte virtuelle Neero gratuitement:\n1. Téléchargez l'application Neero\n2. Créez votre compte\n3. Soumettez votre pièce d'identité et votre NUI. \nAprès vérification, votre carte est créée instantanément !"
 
   utter_card_usage:
-    - text: "Votre carte Neero fonctionne sur tous les sites acceptant les paiements par carte : Netflix, Amazon, Spotify, Uber, AliExpress, Google Play, et bien d'autres. Elle est utilisable partout où les cartes Visa/Mastercard sont acceptées en ligne."
+    - text: "Votre carte Neero vous permet d'effectuer des paiements en ligne. Elle fonctionne sur tous les sites : Netflix, Amazon, Spotify, Uber, AliExpress, Google Play, et bien d'autres. Boostez vos publicités facebook. Elle est utilisable partout où les cartes prépayées sont acceptées en ligne."
 
   utter_fees_info:
     - text: "Nos tarifs Neero :\n- Création de carte : Gratuit\n- Rechargement : 1.5% du montant\n- Transactions : Aucun frais supplémentaire\n\nPour plus de détails, consultez notre grille tarifaire dans l'application."
@@ -119,8 +127,19 @@ responses:
   utter_ask_amount:
     - text: "Quel montant souhaitez-vous envoyer ?"
 
+  utter_ask_transfer_type:
+    - text: "Quel type de transfert souhaitez-vous effectuer ?"
+      buttons:
+        - title: "Mobile Money"
+          payload: "/mobile_money_transfert"
+        - title: "Neero"
+          payload: "/neero_transfert"
+
+  utter_ask_neero_id:
+    - text: "Quel est le username ou l'ID Neero du destinataire ?"
+
   utter_confirm_transfert:
-    - text: "Vous souhaitez envoyer {amount} FCFA au {phone_number}. Confirmez-vous ?"
+    - text: "Vous souhaitez effectuer un transfert mobile money d'un montant de {amount} FCFA au numéro {phone_number}. Confirmez-vous ?"
       buttons:
         - title: "Confirmer"
           payload: "/affirm"
@@ -132,6 +151,20 @@ responses:
 
   utter_transfert_deny:
     - text: "Transfert de {amount} FCFA vers {phone_number} annulé. Si vous souhaitez effectuer un autre transfert, n'hésitez pas à me le faire savoir."
+
+  utter_confirm_neero_transfert:
+    - text: "Vous souhaitez faire un transfert Neero de {amount} FCFA à l'utilisateur {neero_id}. Confirmez-vous ?"
+      buttons:
+        - title: "Confirmer"
+          payload: "/affirm"
+        - title: "Annuler"
+          payload: "/deny"
+
+  utter_neero_transfert_init:
+    - text: "Transfert Neero de {amount} FCFA vers {neero_id} initié.\nVotre code de confirmation vous sera demandé pour terminer la transaction. Le montant sera débité de votre compte Neero."
+
+  utter_neero_transfert_deny:
+    - text: "Transfert Neero de {amount} FCFA vers {neero_id} annulé."
 
 
 session_config:

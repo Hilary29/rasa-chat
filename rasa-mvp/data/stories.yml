@@ -139,21 +139,40 @@ stories:
   - intent: ask_how
   - action: utter_ask_clarification
 
-- story: Transfert sans numéro
+- story: Mobile Money transfert sans numéro
   steps:
-  - intent: transfert_mobile_money
+  - intent: mobile_money_transfert
     entities:
     - amount
   - action: utter_ask_phone_number
 
-- story: Transfert sans montant
+- story: Mobile Money transfert sans montant
   steps:
-  - intent: transfert_mobile_money
+  - intent: mobile_money_transfert
     entities:
     - phone_number
   - action: utter_ask_amount
 
-- story: Transfert sans aucune info
+- story: Mobile Money transfert sans aucune info
   steps:
-  - intent: transfert_mobile_money
+  - intent: mobile_money_transfert
+  - action: utter_ask_amount
+
+- story: Neero transfert sans ID
+  steps:
+  - intent: neero_transfert
+    entities:
+    - amount
+  - action: utter_ask_neero_id
+
+- story: Neero transfert sans montant
+  steps:
+  - intent: neero_transfert
+    entities:
+    - neero_id
+  - action: utter_ask_amount
+
+- story: Neero transfert sans aucune info
+  steps:
+  - intent: neero_transfert
   - action: utter_ask_amount
