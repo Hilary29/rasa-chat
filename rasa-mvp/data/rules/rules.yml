@@ -46,6 +46,21 @@ rules:
   - intent: nlu_fallback
   - action: utter_default
 
+- rule: Utilisateur ne peut pas être aidé
+  steps:
+  - intent: cant_help
+  - action: utter_cant_help
+
+- rule: Pourquoi Neero
+  steps:
+  - intent: why_neero
+  - action: utter_why_neero
+
+- rule: Smalltalk
+  steps:
+  - intent: smalltalk
+  - action: utter_smalltalk
+
 - rule: Transfert générique - demander type
   steps:
   - intent: transfert

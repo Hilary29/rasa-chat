@@ -43,6 +43,7 @@ intents:
   - ask_help_card
   - smalltalk
   - why_neero
+  - cant_help
   
 
 entities:
@@ -56,6 +57,9 @@ entities:
 slots:
   name:
     type: text
+    mappings:
+      - type: from_entity
+        entity: name
   phone_number:
     type: text
     mappings:
@@ -208,5 +212,14 @@ responses:
 
   utter_neero_transfert_deny:
     - text: "Transfert Neero de {amount} FCFA vers {neero_id} annulé."
+
+  utter_cant_help:
+    - text: "Je comprends votre frustration. N'hésitez pas à contacter notre support pour une assistance personnalisée : support@neero.com ou via le chat dans l'application."
+
+  utter_why_neero:
+    - text: "Pourquoi choisir Neero ?\n- Carte virtuelle gratuite et instantanée\n- Paiements en ligne sécurisés partout dans le monde\n- Transferts rapides et à faible coût\n- Application simple et intuitive\n- Support client disponible 7j/7"
+
+  utter_smalltalk:
+    - text: "Je suis là pour vous aider avec les services Neero. Avez-vous une question sur les cartes virtuelles ou les transferts ?"
 
 

@@ -31,6 +31,8 @@ nlu:
     - hello
     - bonsoir
     - hey
+    - hi
+    - h
     - matin
     - soir
     - coucou
@@ -106,7 +108,7 @@ nlu:
     - sos
     - je suis perdu
 
-- intent: canthelp
+- intent: cant_help
   examples: |
     - Je pense que tu ne peux pas m'aider
     - C'est tout ?
@@ -248,6 +250,7 @@ nlu:
     - Ni l'un ni l'autre
     - Jamais
     - Laisse tomber
+    - abandonne
     - Non merci
     - Pas vraiment
     - Absolument pas
@@ -368,7 +371,7 @@ nlu:
     - je fais comment
 
 - intent: why_neero
-  exemples: |
+  examples: |
     - pourquoi utiliser Neero
     - pourquoi choisir Neero
     - avantages de Neero
