@@ -259,8 +259,8 @@ class ActionSubmitTransfer(Action):
             dispatcher.utter_message(
                 text=f"Vous souhaitez faire un transfert Neero de {amount} FCFA a l'utilisateur {neero_id}. Confirmez-vous ?",
                 buttons=[
-                    {"title": "Confirmer", "payload": "/affirm"},
-                    {"title": "Annuler", "payload": "/deny"}
+                    {"title": "Confirmer", "payload": "/confirm_transfer"},
+                    {"title": "Annuler", "payload": "/cancel_transfer"}
                 ]
             )
         else:
@@ -268,8 +268,8 @@ class ActionSubmitTransfer(Action):
             dispatcher.utter_message(
                 text=f"Vous souhaitez effectuer un transfert mobile money de {amount} FCFA au numero {phone_number}. Confirmez-vous ?",
                 buttons=[
-                    {"title": "Confirmer", "payload": "/affirm"},
-                    {"title": "Annuler", "payload": "/deny"}
+                    {"title": "Confirmer", "payload": "/confirm_transfer"},
+                    {"title": "Annuler", "payload": "/cancel_transfer"}
                 ]
             )
 

@@ -118,32 +118,14 @@ rules:
   - action: action_submit_transfer
 
 - rule: Confirmer le transfert
-  condition:
-  - slot_was_set:
-    - transfer_type
-    - amount
   steps:
-  - intent: affirm
+  - intent: confirm_transfer
   - action: utter_transfer_initiated
   - action: action_clear_transaction_slots
 
 - rule: Annuler le transfert
-  condition:
-  - slot_was_set:
-    - transfer_type
-    - amount
   steps:
-  - intent: deny
-  - action: utter_transfer_cancelled
-  - action: action_clear_transaction_slots
-
-- rule: Annuler pendant le formulaire
-  condition:
-  - active_loop: transfer_form
-  steps:
-  - intent: deny
-  - action: action_deactivate_loop
-  - active_loop: null
+  - intent: cancel_transfer
   - action: utter_transfer_cancelled
   - action: action_clear_transaction_slots
 

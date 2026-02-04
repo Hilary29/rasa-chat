@@ -42,6 +42,8 @@ intents:
       - currency
       - transfer_type
   - inform
+  - confirm_transfer
+  - cancel_transfer
   - ask_help_card
   - smalltalk
   - why_neero
@@ -238,9 +240,9 @@ responses:
     - text: "Quel type de transfert souhaitez-vous effectuer ?"
       buttons:
         - title: "Transfert Neero (wallet)"
-          payload: '/inform{"transfer_type": "neero"}'
+          payload: '/inform{{"transfer_type": "neero"}}'
         - title: "Mobile Money (Orange, MTN...)"
-          payload: '/inform{"transfer_type": "mobile_money"}'
+          payload: '/inform{{"transfer_type": "mobile_money"}}'
 
   utter_ask_neero_id:
     - text: "Quel est le username ou l'ID Neero du destinataire ?"

@@ -101,6 +101,24 @@ nlu:
     - je veux envoyer [70000](amount) [@david_tech](neero_id)
     - envoyer [5500](amount) [@ami_proche](neero_id)
 
+- intent: confirm_transfer
+  examples: |
+    - je confirme le transfert
+    - confirmer
+    - oui je confirme
+    - c'est bon
+    - valider le transfert
+    - ok pour le transfert
+
+- intent: cancel_transfer
+  examples: |
+    - annuler le transfert
+    - je ne veux plus
+    - non annule
+    - stop le transfert
+    - je refuse
+    - pas maintenant
+
 - intent: inform
   examples: |
     - sur [neero](transfer_type)
