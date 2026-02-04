@@ -1,49 +1,55 @@
 version: "3.1"
 
 nlu:
-- intent: transfert
+- intent: request_transfer
   examples: |
     - je veux faire un transfert
     - transfert
     - je souhaite envoyer de l'argent
     - envoyer de l'argent
     - faire un virement
-    - je veux transférer de l'argent
+    - je veux transferer de l'argent
     - effectuer un transfert
-    - je veux envoyer [10000](amount)
-    - transfert de [5000](amount)
-    - envoyer [25000](amount)
-    - je veux envoyer de l'argent
     - faire un transfert
     - virement
     - je veux faire un virement
-
-- intent: mobile_money_transfert
-  examples: |
-    - je veux faire un transfert mobile money
-    - envoyer de l'argent par mobile money
-    - transfert orange money
-    - transfert mtn momo
-    - transfert mobile money
+    - je veux envoyer de l'argent
+    - je veux envoyer [10000](amount)
+    - transfert de [5000](amount)
+    - envoyer [25000](amount)
+    - je veux faire un transfert [neero](transfer_type)
+    - transfert [neero](transfer_type)
+    - transfert [wallet](transfer_type)
+    - transfert [mobile money](transfer_type)
+    - transfert [mobile](transfer_type)
+    - transfert [momo](transfer_type)
+    - transfert [orange money](transfer_type)
+    - transfert [mtn momo](transfer_type)
+    - envoyer de l'argent par [mobile money](transfer_type)
+    - envoyer de l'argent sur [neero](transfer_type)
+    - je veux faire un transfert [mobile money](transfer_type)
+    - envoyer de l'argent par [mobile money](transfer_type)
+    - transfert [orange money](transfer_type)
+    - transfert [mtn momo](transfer_type)
+    - je veux [mobile money](transfer_type)
+    - je veux [orange money](transfer_type)
+    - [mtn mobile money](transfer_type) s'il vous plait
+    - transfert par [momo](transfer_type)
+    - transfert sur [wallet neero](transfer_type)
     - je veux envoyer [5000](amount) au [655123456](phone_number)
-    - je veux envoyer [5000](amount) [dollars](currency) au [655123456](phone_number) par mobile money
-    - envoyer [10000](amount) à [699000000](phone_number) via mobile money
-    - transfert mobile de [50000](amount) vers [+237655123456](phone_number)
-    - je veux transférer [25000](amount) via mobile money
-    - envoyer de l'argent au [677889900](phone_number) par momo
-    - faire un virement mobile de [15000](amount) au [690112233](phone_number)
-    - transfert momo [5000](amount) [655443322](phone_number)
-    - envoyer [2000](amount) au [691234567](phone_number) orange money
-    - transfert mobile vers [656778899](phone_number)
-    - envoie [100000](amount) [francs](currency) au [699112233](phone_number) par mobile money
-    - mobile money
-    - orange money
-    - mtn mobile money
-    - momo
+    - je veux envoyer [5000](amount) [dollars](currency) au [655123456](phone_number)
+    - envoyer [10000](amount) a [699000000](phone_number)
+    - transfert de [50000](amount) vers [+237655123456](phone_number)
+    - je veux transferer [25000](amount)
+    - envoyer de l'argent au [677889900](phone_number)
+    - faire un virement de [15000](amount) au [690112233](phone_number)
+    - envoyer [2000](amount) au [691234567](phone_number)
+    - transfert vers [656778899](phone_number)
+    - envoie [100000](amount) [francs](currency) au [699112233](phone_number)
     - je veux envoyer [80000](amount) a [677845896](phone_number)
     - envoyer [75000](amount) a [685412569](phone_number)
     - transfert [50000](amount) au [699123456](phone_number)
-    - je veux transférer [10000](amount) à [655000111](phone_number)
+    - je veux transferer [10000](amount) a [655000111](phone_number)
     - envoie [25000](amount) au [690555444](phone_number)
     - virement de [15000](amount) vers [677111222](phone_number)
     - faire un transfert de [100000](amount) au [656999888](phone_number)
@@ -51,49 +57,72 @@ nlu:
     - je souhaite envoyer [45000](amount) au [655333222](phone_number)
     - transfert de [60000](amount) a [699444555](phone_number)
     - je veux faire un virement de [35000](amount) au [677666555](phone_number)
-    - envoyer [8000](amount) à [690222333](phone_number)
-    - transférer [12000](amount) vers [656111000](phone_number)
+    - envoyer [8000](amount) a [690222333](phone_number)
+    - transferer [12000](amount) vers [656111000](phone_number)
     - je veux envoyer de l'argent au [655888777](phone_number)
     - virement [20000](amount) [699000999](phone_number)
     - envoyer au [677123789](phone_number) [30000](amount)
     - [40000](amount) au [690456123](phone_number)
     - transfert au [656789012](phone_number) de [55000](amount)
-
-- intent: neero_transfert
-  examples: |
-    - envoyer [5000](amount) à [@john_doe](neero_id)
+    - envoyer [5000](amount) a [@john_doe](neero_id)
     - je veux faire un transfert neero
     - envoyer de l'argent sur neero
     - transfert neero
     - transfert wallet neero
-    - transfert de [10000](amount) vers [@marie123](neero_id) sur neero
-    - je veux envoyer [25000](amount) [XAF](currency) à l'utilisateur neero [@paul_k](neero_id)
-    - envoyer de l'argent à [@user456](neero_id) via neero
-    - transfert interne à [@alice](neero_id)
+    - transfert de [10000](amount) vers [@marie123](neero_id)
+    - je veux envoyer [25000](amount) [XAF](currency) a [@paul_k](neero_id)
+    - envoyer de l'argent a [@user456](neero_id)
+    - transfert a [@alice](neero_id)
     - envoyer [50000](amount) wallet to wallet
     - transfert neero vers [@bob](neero_id)
-    - virement neero de [15000](amount) [EUR](currency) à [@sarah_m](neero_id)
+    - virement de [15000](amount) [EUR](currency) a [@sarah_m](neero_id)
     - wallet neero
     - transfert wallet
-    - envoyer à [@pierre99](neero_id) sur neero
-    - je veux transférer [30000](amount) à [@mar0abe4h](neero_id) via neero
+    - envoyer a [@pierre99](neero_id)
+    - je veux transferer [30000](amount) a [@mar0abe4h](neero_id)
     - je veux envoyer [87500](amount) a [@abe415d](neero_id)
     - envoyer [75000](amount) a [@user123](neero_id)
-    - transfert [50000](amount) à [@marc_dubois](neero_id)
-    - je veux transférer [10000](amount) à [@sophie_k](neero_id)
-    - envoie [25000](amount) à [@alex99](neero_id)
+    - transfert [50000](amount) a [@marc_dubois](neero_id)
+    - je veux transferer [10000](amount) a [@sophie_k](neero_id)
+    - envoie [25000](amount) a [@alex99](neero_id)
     - virement de [15000](amount) vers [@jean_paul](neero_id)
-    - faire un transfert de [100000](amount) à [@nadia_m](neero_id)
-    - envoyer de l'argent à [@chris_dev](neero_id)
-    - je souhaite envoyer [45000](amount) à [@emma_2024](neero_id)
+    - faire un transfert de [100000](amount) a [@nadia_m](neero_id)
+    - envoyer de l'argent a [@chris_dev](neero_id)
+    - je souhaite envoyer [45000](amount) a [@emma_2024](neero_id)
     - transfert de [60000](amount) a [@lucas_pro](neero_id)
-    - je veux faire un virement de [35000](amount) à [@marie_anne](neero_id)
-    - envoyer [8000](amount) à [@tom_jerry](neero_id)
-    - transférer [12000](amount) vers [@linda_k](neero_id)
-    - je veux envoyer de l'argent à [@patrick_star](neero_id)
+    - je veux faire un virement de [35000](amount) a [@marie_anne](neero_id)
+    - envoyer [8000](amount) a [@tom_jerry](neero_id)
+    - transferer [12000](amount) vers [@linda_k](neero_id)
+    - je veux envoyer de l'argent a [@patrick_star](neero_id)
     - virement [20000](amount) [@bob_leponge](neero_id)
-    - envoyer à [@carlos_99](neero_id) [30000](amount)
-    - [40000](amount) à [@sandra_m](neero_id)
-    - transfert à [@kevin_pro](neero_id) de [55000](amount)
+    - envoyer a [@carlos_99](neero_id) [30000](amount)
+    - [40000](amount) a [@sandra_m](neero_id)
+    - transfert a [@kevin_pro](neero_id) de [55000](amount)
     - je veux envoyer [70000](amount) [@david_tech](neero_id)
     - envoyer [5500](amount) [@ami_proche](neero_id)
+
+- intent: inform
+  examples: |
+    - sur [neero](transfer_type)
+    - par [mobile money](transfer_type)
+    - en [mobile](transfer_type)
+    - via [momo](transfer_type)
+    - sur le [wallet](transfer_type)
+    - avec [orange money](transfer_type)
+    - par [mtn](transfer_type)
+    - je choisis [neero](transfer_type)
+    - je prefere [mobile money](transfer_type)
+    - [10000](amount)
+    - [50000](amount) francs
+    - [25000](amount) [XAF](currency)
+    - [5000](amount)
+    - [100000](amount)
+    - [@username](neero_id)
+    - [@john_doe](neero_id)
+    - [@marie](neero_id)
+    - [@user123](neero_id)
+    - [655123456](phone_number)
+    - [+237699000000](phone_number)
+    - le [677889900](phone_number)
+    - au [690112233](phone_number)
+    - [699123456](phone_number)

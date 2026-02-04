@@ -7,6 +7,8 @@ actions:
   - action_restart
   - action_clear_transaction_slots
   - action_get_user_info
+  - validate_transfer_form
+  - action_submit_transfer
 intents:
   - greet
   - goodbye
@@ -32,24 +34,14 @@ intents:
   - contact_support
   - ask_how
   - out_of_scope
-  - transfert:
+  - request_transfer:
       use_entities:
       - amount
       - phone_number
       - neero_id
       - currency
-  - mobile_money_transfert:
-      use_entities:
-      - amount
-      - phone_number
-      - neero_id
-      - currency
-  - neero_transfert:
-      use_entities:
-      - amount
-      - phone_number
-      - neero_id
-      - currency
+      - transfer_type
+  - inform
   - ask_help_card
   - smalltalk
   - why_neero
@@ -65,6 +57,7 @@ entities:
   - neero_id
   - card_type
   - user_id
+  - transfer_type
 
 slots:
   name:
@@ -77,11 +70,15 @@ slots:
     mappings:
       - type: from_entity
         entity: phone_number
+        conditions:
+          - active_loop: transfer_form
   amount:
     type: text
     mappings:
       - type: from_entity
         entity: amount
+        conditions:
+          - active_loop: transfer_form
   currency:
     type: categorical
     values:
@@ -96,6 +93,12 @@ slots:
     mappings:
       - type: from_entity
         entity: neero_id
+        conditions:
+          - active_loop: transfer_form
+  transfer_type:
+    type: text
+    mappings:
+      - type: custom
   card_type:
     type: categorical
     values:
@@ -110,12 +113,20 @@ slots:
       - type: from_entity
         entity: user_id
 
+forms:
+  transfer_form:
+    required_slots:
+      - transfer_type
+      - amount
+      - neero_id
+      - phone_number
+
 responses:
   utter_greet:
     - text: "Bonjour ! Je suis l'assistant Neero. Comment puis-je vous aider ?"
       buttons:
         - title: "Transfert"
-          payload: "/transfert"
+          payload: "/request_transfer"
         - title: "Carte"
           payload: "/ask_help_card"
 
@@ -226,41 +237,19 @@ responses:
   utter_ask_transfer_type:
     - text: "Quel type de transfert souhaitez-vous effectuer ?"
       buttons:
-        - title: "Mobile Money"
-          payload: "/mobile_money_transfert"
-        - title: "Neero"
-          payload: "/neero_transfert"
+        - title: "Transfert Neero (wallet)"
+          payload: '/inform{"transfer_type": "neero"}'
+        - title: "Mobile Money (Orange, MTN...)"
+          payload: '/inform{"transfer_type": "mobile_money"}'
 
   utter_ask_neero_id:
     - text: "Quel est le username ou l'ID Neero du destinataire ?"
 
-  utter_confirm_transfert:
-    - text: "Vous souhaitez effectuer un transfert mobile money d'un montant de {amount} FCFA au numéro {phone_number}. Confirmez-vous ?"
-      buttons:
-        - title: "Confirmer"
-          payload: "/affirm"
-        - title: "Annuler"
-          payload: "/deny"
+  utter_transfer_initiated:
+    - text: "Votre transfert a ete initie. Votre code de confirmation vous sera demande pour finaliser la transaction."
 
-  utter_transfert_init:
-    - text: "Transfert de {amount} FCFA vers {phone_number} initié.\nVotre code vous sera demandé pour valider la transaction."
-
-  utter_transfert_deny:
-    - text: "Transfert de {amount} FCFA vers {phone_number} annulé. Si vous souhaitez effectuer un autre transfert, n'hésitez pas à me le faire savoir."
-
-  utter_confirm_neero_transfert:
-    - text: "Vous souhaitez faire un transfert Neero de {amount} FCFA à l'utilisateur {neero_id}. Confirmez-vous ?"
-      buttons:
-        - title: "Confirmer"
-          payload: "/affirm"
-        - title: "Annuler"
-          payload: "/deny"
-
-  utter_neero_transfert_init:
-    - text: "Transfert Neero de {amount} FCFA vers {neero_id} initié.\nVotre code de confirmation vous sera demandé pour terminer la transaction. Le montant sera débité de votre compte Neero."
-
-  utter_neero_transfert_deny:
-    - text: "Transfert Neero de {amount} FCFA vers {neero_id} annulé."
+  utter_transfer_cancelled:
+    - text: "Transfert annule. N'hesitez pas si vous souhaitez effectuer une autre operation."
 
   utter_cant_help:
     - text: "Je comprends votre frustration. N'hésitez pas à contacter notre support pour une assistance personnalisée : support@neero.com ou via le chat dans l'application."

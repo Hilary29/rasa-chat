@@ -101,66 +101,49 @@ rules:
   - intent: smalltalk
   - action: utter_smalltalk
 
-- rule: Transfert générique - demander type
-  steps:
-  - intent: transfert
-  - action: utter_ask_transfer_type
+# === REGLES DU FORMULAIRE DE TRANSFERT ===
 
-- rule: Mobile Money transfert complet avec slots
+- rule: Activer le formulaire de transfert
+  steps:
+  - intent: request_transfer
+  - action: transfer_form
+  - active_loop: transfer_form
+
+- rule: Soumettre le formulaire de transfert
+  condition:
+  - active_loop: transfer_form
+  steps:
+  - action: transfer_form
+  - active_loop: null
+  - action: action_submit_transfer
+
+- rule: Confirmer le transfert
   condition:
   - slot_was_set:
+    - transfer_type
     - amount
-    - phone_number
-  steps:
-  - intent: mobile_money_transfert
-  - action: utter_confirm_transfert
-
-- rule: Confirmation transfert mobile money
-  condition:
-  - slot_was_set:
-    - amount
-    - phone_number
   steps:
   - intent: affirm
-  - action: utter_transfert_init
+  - action: utter_transfer_initiated
   - action: action_clear_transaction_slots
 
-- rule: Annulation transfert mobile money
+- rule: Annuler le transfert
   condition:
   - slot_was_set:
+    - transfer_type
     - amount
-    - phone_number
   steps:
   - intent: deny
-  - action: utter_transfert_deny
+  - action: utter_transfer_cancelled
   - action: action_clear_transaction_slots
 
-- rule: Neero transfert complet avec slots
+- rule: Annuler pendant le formulaire
   condition:
-  - slot_was_set:
-    - amount
-    - neero_id
-  steps:
-  - intent: neero_transfert
-  - action: utter_confirm_neero_transfert
-
-- rule: Confirmation neero transfert
-  condition:
-  - slot_was_set:
-    - amount
-    - neero_id
-  steps:
-  - intent: affirm
-  - action: utter_neero_transfert_init
-  - action: action_clear_transaction_slots
-
-- rule: Annulation neero transfert
-  condition:
-  - slot_was_set:
-    - amount
-    - neero_id
+  - active_loop: transfer_form
   steps:
   - intent: deny
-  - action: utter_neero_transfert_deny
+  - action: action_deactivate_loop
+  - active_loop: null
+  - action: utter_transfer_cancelled
   - action: action_clear_transaction_slots
-  
+

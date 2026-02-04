@@ -1,0 +1,16 @@
+version: "3.1"
+
+nlu:
+- lookup: transfer_type
+  examples: |
+    - neero
+    - wallet
+    - wallet neero
+    - mobile money
+    - mobile
+    - momo
+    - orange money
+    - om
+    - mtn momo
+    - mtn
+    - orange
