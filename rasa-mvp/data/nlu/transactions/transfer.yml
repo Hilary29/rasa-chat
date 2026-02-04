@@ -40,6 +40,24 @@ nlu:
     - orange money
     - mtn mobile money
     - momo
+    - je veux envoyer [80000](amount) a [677845896](phone_number)
+    - envoyer [75000](amount) a [685412569](phone_number)
+    - transfert [50000](amount) au [699123456](phone_number)
+    - je veux transférer [10000](amount) à [655000111](phone_number)
+    - envoie [25000](amount) au [690555444](phone_number)
+    - virement de [15000](amount) vers [677111222](phone_number)
+    - faire un transfert de [100000](amount) au [656999888](phone_number)
+    - envoyer de l'argent au [691777666](phone_number)
+    - je souhaite envoyer [45000](amount) au [655333222](phone_number)
+    - transfert de [60000](amount) a [699444555](phone_number)
+    - je veux faire un virement de [35000](amount) au [677666555](phone_number)
+    - envoyer [8000](amount) à [690222333](phone_number)
+    - transférer [12000](amount) vers [656111000](phone_number)
+    - je veux envoyer de l'argent au [655888777](phone_number)
+    - virement [20000](amount) [699000999](phone_number)
+    - envoyer au [677123789](phone_number) [30000](amount)
+    - [40000](amount) au [690456123](phone_number)
+    - transfert au [656789012](phone_number) de [55000](amount)
 
 - intent: neero_transfert
   examples: |
@@ -59,3 +77,23 @@ nlu:
     - transfert wallet
     - envoyer à [@pierre99](neero_id) sur neero
     - je veux transférer [30000](amount) à [@mar0abe4h](neero_id) via neero
+    - je veux envoyer [87500](amount) a [@abe415d](neero_id)
+    - envoyer [75000](amount) a [@user123](neero_id)
+    - transfert [50000](amount) à [@marc_dubois](neero_id)
+    - je veux transférer [10000](amount) à [@sophie_k](neero_id)
+    - envoie [25000](amount) à [@alex99](neero_id)
+    - virement de [15000](amount) vers [@jean_paul](neero_id)
+    - faire un transfert de [100000](amount) à [@nadia_m](neero_id)
+    - envoyer de l'argent à [@chris_dev](neero_id)
+    - je souhaite envoyer [45000](amount) à [@emma_2024](neero_id)
+    - transfert de [60000](amount) a [@lucas_pro](neero_id)
+    - je veux faire un virement de [35000](amount) à [@marie_anne](neero_id)
+    - envoyer [8000](amount) à [@tom_jerry](neero_id)
+    - transférer [12000](amount) vers [@linda_k](neero_id)
+    - je veux envoyer de l'argent à [@patrick_star](neero_id)
+    - virement [20000](amount) [@bob_leponge](neero_id)
+    - envoyer à [@carlos_99](neero_id) [30000](amount)
+    - [40000](amount) à [@sandra_m](neero_id)
+    - transfert à [@kevin_pro](neero_id) de [55000](amount)
+    - je veux envoyer [70000](amount) [@david_tech](neero_id)
+    - envoyer [5500](amount) [@ami_proche](neero_id)

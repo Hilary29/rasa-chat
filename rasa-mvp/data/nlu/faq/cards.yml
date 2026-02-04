@@ -60,19 +60,84 @@ nlu:
     - générer une carte virtuelle
     - nouvelle carte virtuelle
 
-- intent: card_usage
+- intent: virtual_card_usage
   examples: |
-    - où utiliser la carte
+    - où utiliser la carte virtuelle
     - paiement en ligne possible ?
     - ça marche sur netflix ?
-    - où est-ce que je peux utiliser ma carte
+    - où est-ce que je peux utiliser ma carte virtuelle
     - la carte fonctionne sur Amazon ?
     - je peux payer sur Spotify
-    - quels sites acceptent la carte
+    - quels sites acceptent la carte virtuelle
     - ça marche pour les abonnements
     - paiement sur Uber possible
     - est-ce que ça marche sur AliExpress
-    - la carte est acceptée où
+    - la carte virtuelle est acceptée où
     - sites compatibles avec la carte
     - ça fonctionne sur quels sites
     - je peux acheter sur Google Play
+    - payer en ligne avec ma carte
+    - achats en ligne
+    - paiement internet
+
+- intent: what_is_physical_card
+  examples: |
+    - c'est quoi une carte physique ?
+    - carte physique c'est quoi
+    - qu'est-ce qu'une carte physique
+    - expliquer carte physique
+    - définition carte physique
+    - une carte physique ça veut dire quoi
+    - différence carte physique et virtuelle
+    - quelle différence entre carte physique et virtuelle
+    - c'est quoi la différence entre les cartes
+    - pourquoi prendre une carte physique
+    - avantages carte physique
+    - à quoi sert une carte physique
+
+- intent: create_physical_card
+  examples: |
+    - je veux une carte physique
+    - commander une carte physique
+    - comment avoir une carte physique
+    - obtenir une carte physique
+    - je voudrais commander une carte physique
+    - comment obtenir une carte physique Neero
+    - procédure pour avoir une carte physique
+    - je veux commander une carte bancaire
+    - demander une carte physique
+    - créer une carte physique
+    - nouvelle carte physique
+    - comment faire pour avoir une carte physique
+
+- intent: physical_card_usage
+  examples: |
+    - où utiliser ma carte physique
+    - retrait DAB
+    - retirer de l'argent au distributeur
+    - paiement en magasin
+    - payer en boutique
+    - la carte physique marche où
+    - je peux retirer au guichet
+    - paiement chez les commerçants
+    - utiliser ma carte en magasin
+    - retrait au distributeur automatique
+    - payer dans les boutiques
+    - ça marche pour les achats en magasin
+    - je peux payer au supermarché
+    - retrait d'espèces
+
+- intent: physical_card_delivery
+  examples: |
+    - délai de livraison carte physique
+    - combien de temps pour recevoir ma carte
+    - où récupérer ma carte physique
+    - quand vais-je recevoir ma carte
+    - livraison de la carte physique
+    - suivi de ma commande de carte
+    - ma carte physique arrive quand
+    - temps d'attente carte physique
+    - comment récupérer ma carte physique
+    - où est ma carte physique
+    - statut de ma commande carte
+    - délai réception carte

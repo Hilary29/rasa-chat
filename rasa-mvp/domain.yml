@@ -13,7 +13,13 @@ intents:
   - bot_challenge
   - what_is_virtual_card
   - create_virtual_card
-  - card_usage
+  - virtual_card_usage
+  - what_is_physical_card
+  - create_physical_card
+  - physical_card_usage
+  - physical_card_delivery
+  - virtual_card_help
+  - physical_card_help
   - fees_info
   - payment_failed
   - check_balance
