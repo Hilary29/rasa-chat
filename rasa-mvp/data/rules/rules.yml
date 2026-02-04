@@ -31,10 +31,45 @@ rules:
   - intent: out_of_scope
   - action: utter_out_of_scope
 
-- rule: Aide carte virtuelle
+- rule: Aide carte - menu principal
   steps:
   - intent: ask_help_card
   - action: utter_ask_help_card
+
+- rule: Aide carte virtuelle
+  steps:
+  - intent: virtual_card_help
+  - action: utter_virtual_card_help
+
+- rule: Aide carte physique
+  steps:
+  - intent: physical_card_help
+  - action: utter_physical_card_help
+
+- rule: Définition carte physique
+  steps:
+  - intent: what_is_physical_card
+  - action: utter_what_is_physical_card
+
+- rule: Commander carte physique
+  steps:
+  - intent: create_physical_card
+  - action: utter_create_physical_card
+
+- rule: Utilisation carte physique
+  steps:
+  - intent: physical_card_usage
+  - action: utter_physical_card_usage
+
+- rule: Livraison carte physique
+  steps:
+  - intent: physical_card_delivery
+  - action: utter_physical_card_delivery
+
+- rule: Utilisation carte virtuelle
+  steps:
+  - intent: virtual_card_usage
+  - action: utter_virtual_card_usage
 
 - rule: Contact support
   steps:
@@ -83,6 +118,7 @@ rules:
   steps:
   - intent: affirm
   - action: utter_transfert_init
+  - action: action_clear_transaction_slots
 
 - rule: Annulation transfert mobile money
   condition:
@@ -92,6 +128,7 @@ rules:
   steps:
   - intent: deny
   - action: utter_transfert_deny
+  - action: action_clear_transaction_slots
 
 - rule: Neero transfert complet avec slots
   condition:
@@ -110,6 +147,7 @@ rules:
   steps:
   - intent: affirm
   - action: utter_neero_transfert_init
+  - action: action_clear_transaction_slots
 
 - rule: Annulation neero transfert
   condition:
@@ -119,3 +157,5 @@ rules:
   steps:
   - intent: deny
   - action: utter_neero_transfert_deny
+  - action: action_clear_transaction_slots
+  

@@ -15,19 +15,61 @@ stories:
   - intent: affirm
   - action: utter_affirm
 
-- story: Utilisation carte
+- story: Utilisation carte virtuelle
   steps:
-  - intent: card_usage
-  - action: utter_card_usage
+  - intent: virtual_card_usage
+  - action: utter_virtual_card_usage
   - intent: affirm
   - action: utter_affirm
 
-- story: Utilisation puis frais
+- story: Utilisation virtuelle puis frais
   steps:
-  - intent: card_usage
-  - action: utter_card_usage
+  - intent: virtual_card_usage
+  - action: utter_virtual_card_usage
   - intent: fees_info
   - action: utter_fees_info
+
+- story: Découverte carte physique
+  steps:
+  - intent: what_is_physical_card
+  - action: utter_what_is_physical_card
+  - intent: create_physical_card
+  - action: utter_create_physical_card
+
+- story: Commande carte physique puis livraison
+  steps:
+  - intent: create_physical_card
+  - action: utter_create_physical_card
+  - intent: physical_card_delivery
+  - action: utter_physical_card_delivery
+
+- story: Utilisation carte physique
+  steps:
+  - intent: physical_card_usage
+  - action: utter_physical_card_usage
+  - intent: affirm
+  - action: utter_affirm
+
+- story: Comparaison cartes
+  steps:
+  - intent: what_is_virtual_card
+  - action: utter_what_is_virtual_card
+  - intent: what_is_physical_card
+  - action: utter_what_is_physical_card
+
+- story: Menu carte puis virtuelle
+  steps:
+  - intent: ask_help_card
+  - action: utter_ask_help_card
+  - intent: virtual_card_help
+  - action: utter_virtual_card_help
+
+- story: Menu carte puis physique
+  steps:
+  - intent: ask_help_card
+  - action: utter_ask_help_card
+  - intent: physical_card_help
+  - action: utter_physical_card_help
 
 - story: Informations frais
   steps:
@@ -106,12 +148,12 @@ stories:
   - intent: create_virtual_card
   - action: utter_create_virtual_card
 
-- story: Explication puis utilisation
+- story: Explication puis utilisation virtuelle
   steps:
   - intent: what_is_virtual_card
   - action: utter_what_is_virtual_card
-  - intent: card_usage
-  - action: utter_card_usage
+  - intent: virtual_card_usage
+  - action: utter_virtual_card_usage
 
 - story: Parcours complet découverte
   steps:

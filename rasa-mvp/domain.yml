@@ -3,6 +3,9 @@ session_config:
   session_expiration_time: 480
   carry_over_slots_to_new_session: true
 
+actions:
+  - action_restart
+  - action_clear_transaction_slots
 intents:
   - greet
   - goodbye
@@ -132,8 +135,20 @@ responses:
   utter_create_virtual_card:
     - text: "Pour obtenir votre carte virtuelle Neero gratuitement:\n1. Téléchargez l'application Neero\n2. Créez votre compte\n3. Soumettez votre pièce d'identité et votre NUI. \nAprès vérification, votre carte est créée instantanément !"
 
-  utter_card_usage:
-    - text: "Votre carte Neero vous permet d'effectuer des paiements en ligne. Elle fonctionne sur tous les sites : Netflix, Amazon, Spotify, Uber, AliExpress, Google Play, et bien d'autres. Boostez vos publicités facebook. Elle est utilisable partout où les cartes prépayées sont acceptées en ligne."
+  utter_virtual_card_usage:
+    - text: "Votre carte virtuelle Neero vous permet d'effectuer des paiements en ligne. Elle fonctionne sur tous les sites : Netflix, Amazon, Spotify, Uber, AliExpress, Google Play, et bien d'autres. Boostez vos publicités Facebook. Elle est utilisable partout où les cartes prépayées sont acceptées en ligne."
+
+  utter_what_is_physical_card:
+    - text: "Une carte physique Neero est une carte bancaire classique que vous pouvez tenir en main. Elle vous permet de :\n- Retirer de l'argent aux DAB/distributeurs\n- Payer chez les commerçants (TPE)\n- Effectuer des achats en ligne\n\nContrairement à la carte virtuelle (100% digitale), la carte physique est livrée chez vous."
+
+  utter_create_physical_card:
+    - text: "Pour commander votre carte physique Neero :\n1. Ouvrez l'application Neero\n2. Allez dans 'Cartes' > 'Commander une carte physique'\n3. Confirmez votre adresse de livraison\n4. Payez les frais de fabrication\n\nVotre carte sera livrée sous 7 à 14 jours ouvrés."
+
+  utter_physical_card_usage:
+    - text: "Avec votre carte physique Neero, vous pouvez :\n- Retirer de l'argent dans tous les DAB/distributeurs\n- Payer chez les commerçants (restaurants, supermarchés, boutiques...)\n- Effectuer des paiements sans contact\n- Payer en ligne comme avec la carte virtuelle\n\nElle est acceptée partout où les cartes Visa/Mastercard sont acceptées."
+
+  utter_physical_card_delivery:
+    - text: "Délais de livraison carte physique :\n- Délai standard : 7 à 14 jours ouvrés\n- Livraison à domicile à l'adresse indiquée\n\nPour suivre votre commande, allez dans 'Cartes' > 'Suivi commande' dans l'application. Vous recevrez un SMS à la livraison."
 
   utter_fees_info:
     - text: "Nos tarifs Neero :\n- Création de carte : Gratuit\n- Rechargement : 1.5% du montant\n- Transactions : Aucun frais supplémentaire\n\nPour plus de détails, consultez notre grille tarifaire dans l'application."
@@ -160,16 +175,36 @@ responses:
     - text: "Désolé, je suis spécialisé dans l'assistance Neero. Je peux vous aider avec les cartes virtuelles, les paiements et votre compte. Avez-vous une question à ce sujet ?"
 
   utter_ask_help_card:
-    - text: "Que souhaitez-vous savoir sur la carte Neero ?"
+    - text: "Quel type de carte vous intéresse ?"
+      buttons:
+        - title: "Carte Virtuelle"
+          payload: "/virtual_card_help"
+        - title: "Carte Physique"
+          payload: "/physical_card_help"
+        - title: "Frais et tarifs"
+          payload: "/fees_info"
+
+  utter_virtual_card_help:
+    - text: "Que souhaitez-vous savoir sur la carte virtuelle ?"
       buttons:
         - title: "C'est quoi une carte virtuelle ?"
           payload: "/what_is_virtual_card"
-        - title: "Créer une carte"
+        - title: "Créer une carte virtuelle"
           payload: "/create_virtual_card"
-        - title: "Où utiliser ma carte ?"
-          payload: "/card_usage"
-        - title: "Frais et tarifs"
-          payload: "/fees_info"
+        - title: "Où l'utiliser ?"
+          payload: "/virtual_card_usage"
+
+  utter_physical_card_help:
+    - text: "Que souhaitez-vous savoir sur la carte physique ?"
+      buttons:
+        - title: "C'est quoi une carte physique ?"
+          payload: "/what_is_physical_card"
+        - title: "Commander une carte physique"
+          payload: "/create_physical_card"
+        - title: "Où l'utiliser ?"
+          payload: "/physical_card_usage"
+        - title: "Livraison"
+          payload: "/physical_card_delivery"
 
   utter_default:
     - text: "Je n'ai pas bien compris. Pouvez-vous reformuler votre question ?"

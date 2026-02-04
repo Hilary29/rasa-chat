@@ -2,6 +2,25 @@ version: "3.1"
 
 nlu:
 
+- intent: ask_help_card
+  examples: |
+    - aide sur les cartes
+    - j'ai une question sur les cartes
+    - je veux des infos sur les cartes
+    - parle moi des cartes
+    - renseignement sur les cartes
+    - information carte
+    - aide carte
+    - question sur la carte
+    - je veux savoir sur les cartes Neero
+    - c'est quoi vos cartes
+    - les cartes Neero
+    - que faire avec une carte
+    - que savoir sur la carte
+    - j'ai besoin d'aide sur les cartes
+    - parle moi de vos cartes
+    - à propos des cartes
+
 - intent: card_security
   examples: |
     - ma carte est sécurisée ?
@@ -45,24 +64,25 @@ nlu:
 
 - intent: create_virtual_card
   examples: |
-    - comment créer une carte
+    - comment créer une carte virtuelle
     - je veux une carte virtuelle
-    - créer une carte Neero
+    - créer une carte virtuelle Neero
     - comment obtenir une carte virtuelle
-    - je voudrais créer une carte
+    - je voudrais créer une carte virtuelle
     - création de carte virtuelle
-    - comment avoir une carte Neero
-    - procédure pour créer une carte
+    - comment avoir une carte virtuelle Neero
+    - procédure pour créer une carte virtuelle
     - étapes pour avoir une carte virtuelle
-    - je veux commander une carte
+    - je veux commander une carte virtuelle
     - obtenir une carte virtuelle
-    - comment faire pour avoir une carte
+    - comment faire pour avoir une carte virtuelle
     - générer une carte virtuelle
     - nouvelle carte virtuelle
 
 - intent: virtual_card_usage
   examples: |
     - où utiliser la carte virtuelle
+    - comment utiliser ma carte virtuelle
     - paiement en ligne possible ?
     - ça marche sur netflix ?
     - où est-ce que je peux utiliser ma carte virtuelle
@@ -73,11 +93,11 @@ nlu:
     - paiement sur Uber possible
     - est-ce que ça marche sur AliExpress
     - la carte virtuelle est acceptée où
-    - sites compatibles avec la carte
+    - sites compatibles avec la carte virtuelle
     - ça fonctionne sur quels sites
     - je peux acheter sur Google Play
-    - payer en ligne avec ma carte
-    - achats en ligne
+    - payer en ligne avec ma carte virtuelle
+    - achats en ligne avec carte virtuelle
     - paiement internet
 
 - intent: what_is_physical_card
@@ -108,6 +128,7 @@ nlu:
     - demander une carte physique
     - créer une carte physique
     - nouvelle carte physique
+    - se procurer une carte physique
     - comment faire pour avoir une carte physique
 
 - intent: physical_card_usage
@@ -126,6 +147,7 @@ nlu:
     - ça marche pour les achats en magasin
     - je peux payer au supermarché
     - retrait d'espèces
+    - comment utiliser ma carte physique
 
 - intent: physical_card_delivery
   examples: |
@@ -141,3 +163,23 @@ nlu:
     - où est ma carte physique
     - statut de ma commande carte
     - délai réception carte
+
+- intent: virtual_card_help
+  examples: |
+    - aide carte virtuelle
+    - question sur la carte virtuelle
+    - je veux savoir sur la carte virtuelle
+    - infos carte virtuelle
+    - renseignement carte virtuelle
+    - en savoir plus sur la carte virtuelle
+    - parle moi de la carte virtuelle
+
+- intent: physical_card_help
+  examples: |
+    - aide carte physique
+    - question sur la carte physique
+    - je veux savoir sur la carte physique
+    - infos carte physique
+    - renseignement carte physique
+    - en savoir plus sur la carte physique
+    - parle moi de la carte physique
