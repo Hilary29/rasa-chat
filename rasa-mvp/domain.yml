@@ -6,6 +6,7 @@ session_config:
 actions:
   - action_restart
   - action_clear_transaction_slots
+  - action_get_user_info
 intents:
   - greet
   - goodbye
@@ -53,6 +54,7 @@ intents:
   - smalltalk
   - why_neero
   - cant_help
+  - get_user_info
   
 
 entities:
@@ -62,6 +64,7 @@ entities:
   - currency
   - neero_id
   - card_type
+  - user_id
 
 slots:
   name:
@@ -101,6 +104,11 @@ slots:
     mappings:
       - type: from_entity
         entity: card_type
+  user_id:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: user_id
 
 responses:
   utter_greet:
@@ -151,7 +159,7 @@ responses:
     - text: "Délais de livraison carte physique :\n- Délai standard : 7 à 14 jours ouvrés\n- Livraison à domicile à l'adresse indiquée\n\nPour suivre votre commande, allez dans 'Cartes' > 'Suivi commande' dans l'application. Vous recevrez un SMS à la livraison."
 
   utter_fees_info:
-    - text: "Nos tarifs Neero :\n- Création de carte : Gratuit\n- Rechargement : 1.5% du montant\n- Transactions : Aucun frais supplémentaire\n\nPour plus de détails, consultez notre grille tarifaire dans l'application."
+    - text: "Nos tarifs Neero :\n- Création de carte : Gratuit\n- Rechargement : 1.5% du montant\n- Transactions : Aucun frais supplémentaire."
 
   utter_payment_failed:
     - text: "Votre paiement a échoué ? Vérifiez :\n1. Le solde de votre carte\n2. La date d'expiration\n3. Le CVV saisi\n4. Que le site accepte les cartes virtuelles\n\nSi le problème persiste, contactez notre support."

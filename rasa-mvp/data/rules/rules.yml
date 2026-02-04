@@ -31,6 +31,11 @@ rules:
   - intent: out_of_scope
   - action: utter_out_of_scope
 
+- rule: Recherche utilisateur API
+  steps:
+  - intent: get_user_info
+  - action: action_get_user_info
+
 - rule: Aide carte - menu principal
   steps:
   - intent: ask_help_card

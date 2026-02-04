@@ -29,6 +29,12 @@ uv pip install rasa
 ```
 rasa train
 ```
+## To train the bot after adding or modifying actions
+
+```
+rasa train --force
+```
+
 
 ## To run the bot
 
