@@ -18,7 +18,6 @@ API_USERS_URL = "https://jsonplaceholder.typicode.com/users"
 
 
 class ValidateTransferForm(FormValidationAction):
-    """Valide et gere le formulaire de transfert avec slots dynamiques."""
 
     def name(self) -> Text:
         return "validate_transfer_form"
@@ -30,19 +29,15 @@ class ValidateTransferForm(FormValidationAction):
         tracker: Tracker,
         domain: DomainDict,
     ) -> List[Text]:
-        """Determine dynamiquement les slots requis selon transfer_type."""
 
         transfer_type = tracker.get_slot("transfer_type")
 
-        # D'abord on a besoin du type de transfert
         if not transfer_type:
             return ["transfer_type"]
 
-        # Ensuite le montant
         if not tracker.get_slot("amount"):
             return ["transfer_type", "amount"]
 
-        # Puis le destinataire selon le type
         if transfer_type == "neero":
             return ["transfer_type", "amount", "neero_id"]
         elif transfer_type == "mobile_money":
@@ -57,7 +52,6 @@ class ValidateTransferForm(FormValidationAction):
         tracker: Tracker,
         domain: DomainDict,
     ) -> Dict[Text, Any]:
-        """Extrait transfer_type des entites ou infere depuis d'autres slots."""
 
         # Verifier si deja defini
         current_transfer_type = tracker.get_slot("transfer_type")
@@ -105,7 +99,7 @@ class ValidateTransferForm(FormValidationAction):
         return {"transfer_type": None}
 
     def _normalize_transfer_type(self, value: str) -> Optional[str]:
-        """Normalise les valeurs de transfer_type vers 'neero' ou 'mobile_money'."""
+        # transforme les valeurs de transfer_type vers 'neero' ou 'mobile_money'
         if not value:
             return None
 
@@ -129,20 +123,18 @@ class ValidateTransferForm(FormValidationAction):
         tracker: Tracker,
         domain: DomainDict,
     ) -> Dict[Text, Any]:
-        """Valide le slot transfer_type."""
 
         if slot_value in ["neero", "mobile_money"]:
             return {"transfer_type": slot_value}
 
-        # Essayer de normaliser
         normalized = self._normalize_transfer_type(slot_value)
         if normalized:
             return {"transfer_type": normalized}
 
-        dispatcher.utter_message(
-            text="Type de transfert non reconnu. Veuillez choisir Neero ou Mobile Money."
-        )
-        return {"transfer_type": None}
+#        dispatcher.utter_message(
+#            text="Quel type de transfert souhaitez vous effectuer? Veuillez choisir Neero ou Mobile Money."
+#        )
+#        return {"transfer_type": None}  
 
     def validate_amount(
         self,
@@ -151,7 +143,6 @@ class ValidateTransferForm(FormValidationAction):
         tracker: Tracker,
         domain: DomainDict,
     ) -> Dict[Text, Any]:
-        """Valide le slot amount."""
 
         if not slot_value:
             return {"amount": None}
@@ -167,9 +158,9 @@ class ValidateTransferForm(FormValidationAction):
                 )
                 return {"amount": None}
 
-            if amount > 10000000:  # Limite 10 millions
+            if amount > 1000000:  # Limite 1 millions
                 dispatcher.utter_message(
-                    text="Le montant maximum autorise est de 10 000 000 FCFA."
+                    text="Le montant maximum autorise est de 1 000 000 FCFA."
                 )
                 return {"amount": None}
 
@@ -185,10 +176,7 @@ class ValidateTransferForm(FormValidationAction):
         self,
         slot_value: Any,
         dispatcher: CollectingDispatcher,
-        tracker: Tracker,
-        domain: DomainDict,
     ) -> Dict[Text, Any]:
-        """Valide le slot neero_id (doit commencer par @)."""
 
         if not slot_value:
             return {"neero_id": None}
@@ -202,7 +190,7 @@ class ValidateTransferForm(FormValidationAction):
             return {"neero_id": slot_value}
 
         dispatcher.utter_message(
-            text="ID Neero invalide. Le format doit etre @username (3-20 caracteres alphanumeriques)."
+            text="ID Neero invalide. Le format doit etre @username (3-20 caracteres)."
         )
         return {"neero_id": None}
 
@@ -210,10 +198,7 @@ class ValidateTransferForm(FormValidationAction):
         self,
         slot_value: Any,
         dispatcher: CollectingDispatcher,
-        tracker: Tracker,
-        domain: DomainDict,
     ) -> Dict[Text, Any]:
-        """Valide le slot phone_number (format Cameroun)."""
 
         if not slot_value:
             return {"phone_number": None}
@@ -239,7 +224,6 @@ class ValidateTransferForm(FormValidationAction):
 
 
 class ActionSubmitTransfer(Action):
-    """Soumet le transfert apres completion du formulaire."""
 
     def name(self) -> Text:
         return "action_submit_transfer"
@@ -277,7 +261,6 @@ class ActionSubmitTransfer(Action):
 
 
 class ActionClearTransactionSlots(Action):
-    """Reinitialise les slots de transaction apres confirmation/annulation."""
 
     def name(self) -> Text:
         return "action_clear_transaction_slots"
@@ -316,13 +299,11 @@ class ActionRestart(Action):
 
 
 class ActionGetUserInfo(Action):
-    """Recupere les informations d'un utilisateur depuis l'API externe par son ID."""
 
     def name(self) -> Text:
         return "action_get_user_info"
 
     def _fetch_user_by_id(self, user_id: int) -> Optional[Dict]:
-        """Recupere un utilisateur par son ID depuis l'API."""
         try:
             response = requests.get(f"{API_USERS_URL}/{user_id}", timeout=10)
             response.raise_for_status()
