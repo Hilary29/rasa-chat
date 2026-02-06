@@ -348,7 +348,7 @@ class ActionAskAffirmation(Action):
         if len(intent_ranking) > 1:
             diff = intent_ranking[0].get("confidence", 0) - intent_ranking[1].get("confidence", 0)
             if diff < 0.2:
-                intent_ranking = intent_ranking[:2]
+                intent_ranking = intent_ranking[:3]
             else:
                 intent_ranking = intent_ranking[:1]
 

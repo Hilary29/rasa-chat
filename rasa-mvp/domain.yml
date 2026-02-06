@@ -182,7 +182,7 @@ responses:
     - text: "Pour commander votre carte physique Neero :\n1. Ouvrez l'application Neero\n2. Allez dans 'Cartes' > 'Commander une carte physique'\n3. Confirmez votre adresse de livraison\n4. Payez les frais de fabrication\n\nVotre carte sera livrée sous 7 à 14 jours ouvrés."
 
   utter_physical_card_usage:
-    - text: "Avec votre carte physique Neero, vous pouvez :\n- Retirer de l'argent dans tous les DAB/distributeurs\n- Payer chez les commerçants (restaurants, supermarchés, boutiques...)\n- Effectuer des paiements sans contact\n- Payer en ligne comme avec la carte virtuelle\n\nElle est acceptée partout où les cartes Visa/Mastercard sont acceptées."
+    - text: "Avec votre carte physique Neero, vous pouvez :\n- Retirer de l'argent dans tous les DAB/distributeurs\n- Payer chez les commerçants (restaurants, supermarchés, boutiques...)\n- Effectuer des paiements sans contact\n- Payer en ligne comme avec la carte virtuelle."
 
   utter_physical_card_delivery:
     - text: "Délais de livraison carte physique :\n- Délai standard : 7 à 14 jours ouvrés\n- Livraison à domicile à l'adresse indiquée\n\nPour suivre votre commande, allez dans 'Cartes' > 'Suivi commande' dans l'application. Vous recevrez un SMS à la livraison."
@@ -225,8 +225,14 @@ responses:
           payload: "/virtual_card_help"
         - title: "Carte Physique"
           payload: "/physical_card_help"
-        - title: "Frais et tarifs"
-          payload: "/fees_info"
+
+  utter_what_is_card:
+    - text: "Une carte est un instrument de paiement associé à un compte.\nPour plus de précision, de quel type de carte parlez-vous ? ?"
+      buttons:
+        - title: "Carte Virtuelle"
+          payload: "/what_is_virtual_card"
+        - title: "Carte Physique"
+          payload: "/what_is_physical_card"
 
   utter_virtual_card_help:
     - text: "Que souhaitez-vous savoir sur la carte virtuelle ?"
@@ -288,9 +294,9 @@ responses:
     - text: "Tout roule de mon cote ! Dites-moi comment je peux vous etre utile."
 
   utter_chitchat/ask_whatname:
-    - text: "Je m'appelle Neero, votre assistant financier. Enchante !"
-    - text: "Mon nom est Neero ! Je suis la pour vous aider avec vos cartes et transferts."
-    - text: "Je suis Neero, l'assistant virtuel de Neero. Ravi de faire votre connaissance !"
+    - text: "Je suis l'assistant de Neero. Enchante !"
+    - text: "Je suis l'assistant de Neero ! Je suis la pour vous aider avec vos cartes et transferts."
+    - text: "Je l'assistant virtuel de Neero. Ravi de faire votre connaissance !"
 
   utter_chitchat/ask_whoami:
     - text: "Je suis l'assistant virtuel de Neero. Mon role est de vous aider avec vos cartes de paiement, vos transferts d'argent et de repondre a vos questions sur nos services."
@@ -299,11 +305,11 @@ responses:
   utter_chitchat/ask_age:
     - text: "Je suis tout jeune ! J'apprends et je m'ameliore chaque jour pour mieux vous servir."
     - text: "L'age n'est qu'un chiffre ! Ce qui compte, c'est que je sois la pour vous aider avec vos operations financieres."
-    - text: "Je suis ne avec Neero, donc je suis encore assez jeune. Mais je grandis vite !"
+    - text: "J'ai été créé en 2026."
 
   utter_chitchat/ask_howbuilt:
-    - text: "J'ai ete cree par l'equipe Neero en utilisant des technologies d'intelligence artificielle. Mon but : rendre vos operations financieres plus simples !"
-    - text: "L'equipe technique de Neero m'a concu avec de l'IA pour vous offrir la meilleure experience possible."
+    - text: "J'ai ete cree par l'equipe Neero. Mon but : rendre vos operations financieres plus simples !"
+    - text: "L'equipe technique de Neero m'a concu pour vous offrir la meilleure experience possible."
 
   utter_chitchat/ask_wherefrom:
     - text: "Je viens du Cameroun, tout comme Neero ! Notre mission est de faciliter les paiements et transferts en Afrique et partout dans le monde."
@@ -311,7 +317,7 @@ responses:
 
   utter_chitchat/ask_capabilities:
     - text: "Je parle francais et je suis specialise dans les services financiers Neero. Je peux vous aider avec les cartes, les transferts, les frais et le support."
-    - text: "Je suis un assistant IA, donc je ne dors pas et je ne mange pas ! Mais je comprends le francais et je suis la 24h/24 pour vos questions Neero."
+    - text: "Je suis un assistant IA, je comprends le francais et je suis la 24h/24 pour vos questions Neero."
     - text: "J'apprends en permanence ! Pour l'instant je maitrise les cartes Neero, les transferts et les informations sur nos services."
 
   utter_chitchat/handle_compliment:

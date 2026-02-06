@@ -11,6 +11,11 @@ nlu:
     - renseignement sur les cartes
     - information carte
     - aide carte
+    - Comment avoir une carte
+    - comment obtenir une carte
+    - comment utiliser ma carte
+    - ou creer une carte
+    - comment commander une carte
     - question sur la carte
     - je veux savoir sur les cartes Neero
     - c'est quoi vos cartes
@@ -20,6 +25,19 @@ nlu:
     - j'ai besoin d'aide sur les cartes
     - parle moi de vos cartes
     - à propos des cartes
+
+
+- intent: what_is_card
+  examples: |
+    - c'est quoi une carte Neero
+    - qu'est-ce qu'une carte 
+    - expliquer la carte Neero
+    - définition carte Neero
+    - une carte Neero ça veut dire quoi
+    - c'est quoi le concept de carte Neero
+    - peux-tu m'expliquer ce qu'est une carte Neero
+    - je ne comprends pas ce qu'est une carte Neero
+    - pourquoi une carte Neero
 
 - intent: card_security
   examples: |
@@ -156,8 +174,10 @@ nlu:
     - où récupérer ma carte physique
     - quand vais-je recevoir ma carte
     - livraison de la carte physique
+    - EN combien de temps ma carte est elle livree
     - suivi de ma commande de carte
     - ma carte physique arrive quand
+    - COmbien de temps faut il pour recevoir ma carte physique
     - temps d'attente carte physique
     - comment récupérer ma carte physique
     - où est ma carte physique
