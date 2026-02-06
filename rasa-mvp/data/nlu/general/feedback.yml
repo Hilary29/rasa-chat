@@ -1,0 +1,25 @@
+version: "3.1"
+
+nlu:
+- intent: feedback
+  examples: |
+    - super
+    - genial
+    - parfait merci
+    - c'etait bien
+    - ca m'a aide
+    - tres utile
+    - top
+    - excellent
+    - bien
+    - nul
+    - pas top
+    - ca ne m'a pas aide
+    - pas utile
+    - bof
+    - mauvais
+    - pas satisfait
+    - c'etait pas bien
+    - moyen
+    - ca va
+    - correct

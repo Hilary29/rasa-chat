@@ -9,6 +9,9 @@ actions:
   - action_get_user_info
   - validate_transfer_form
   - action_submit_transfer
+  - action_ask_affirmation
+  - action_default_fallback
+  - action_explain_transfer_form
 intents:
   - greet
   - goodbye
@@ -45,10 +48,15 @@ intents:
   - confirm_transfer
   - cancel_transfer
   - ask_help_card
-  - smalltalk
+  - chitchat:
+      use_entities: []
   - why_neero
   - cant_help
   - get_user_info
+  - explain
+  - feedback:
+      use_entities: false
+  - restart
   
 
 entities:
@@ -114,6 +122,14 @@ slots:
     mappings:
       - type: from_entity
         entity: user_id
+  feedback_value:
+    type: categorical
+    values:
+      - positive
+      - negative
+    influence_conversation: false
+    mappings:
+      - type: custom
 
 forms:
   transfer_form:
@@ -193,7 +209,14 @@ responses:
     - text: "Pouvez-vous préciser votre question ? Je peux vous aider avec le solde, le rechargement, la création de carte, les paiements ou la sécurité."
 
   utter_out_of_scope:
-    - text: "Désolé, je suis spécialisé dans l'assistance Neero. Je peux vous aider avec les cartes virtuelles, les paiements et votre compte. Avez-vous une question à ce sujet ?"
+    - text: "Desole, ca ne fait pas partie de mes competences. Voici ce que je peux faire :"
+      buttons:
+        - title: "Faire un transfert"
+          payload: "/request_transfer"
+        - title: "Info sur les cartes"
+          payload: "/ask_help_card"
+        - title: "Contacter le support"
+          payload: "/contact_support"
 
   utter_ask_help_card:
     - text: "Quel type de carte vous intéresse ?"
@@ -239,7 +262,7 @@ responses:
   utter_ask_transfer_type:
     - text: "Quel type de transfert souhaitez-vous effectuer ?"
       buttons:
-        - title: "Transfert Neero (wallet)"
+        - title: "Transfert Neero"
           payload: '/inform{{"transfer_type": "neero"}}'
         - title: "Mobile Money (Orange, MTN...)"
           payload: '/inform{{"transfer_type": "mobile_money"}}'
@@ -259,7 +282,79 @@ responses:
   utter_why_neero:
     - text: "Pourquoi choisir Neero ?\n- Carte virtuelle gratuite et instantanée\n- Paiements en ligne sécurisés partout dans le monde\n- Transferts rapides et à faible coût\n- Application simple et intuitive\n- Support client disponible 7j/7"
 
-  utter_smalltalk:
-    - text: "Je suis là pour vous aider avec les services Neero. Avez-vous une question sur les cartes virtuelles ou les transferts ?"
+  utter_chitchat/ask_howdoing:
+    - text: "Je vais tres bien, merci de demander ! Et vous, comment puis-je vous aider aujourd'hui ?"
+    - text: "Ca va super ! Je suis pret a vous accompagner. Que puis-je faire pour vous ?"
+    - text: "Tout roule de mon cote ! Dites-moi comment je peux vous etre utile."
 
+  utter_chitchat/ask_whatname:
+    - text: "Je m'appelle Neero, votre assistant financier. Enchante !"
+    - text: "Mon nom est Neero ! Je suis la pour vous aider avec vos cartes et transferts."
+    - text: "Je suis Neero, l'assistant virtuel de Neero. Ravi de faire votre connaissance !"
 
+  utter_chitchat/ask_whoami:
+    - text: "Je suis l'assistant virtuel de Neero. Mon role est de vous aider avec vos cartes de paiement, vos transferts d'argent et de repondre a vos questions sur nos services."
+    - text: "Je suis Neero, un assistant IA specialise dans les services financiers. Je peux vous aider avec les cartes virtuelles, physiques, les transferts et bien plus !"
+
+  utter_chitchat/ask_age:
+    - text: "Je suis tout jeune ! J'apprends et je m'ameliore chaque jour pour mieux vous servir."
+    - text: "L'age n'est qu'un chiffre ! Ce qui compte, c'est que je sois la pour vous aider avec vos operations financieres."
+    - text: "Je suis ne avec Neero, donc je suis encore assez jeune. Mais je grandis vite !"
+
+  utter_chitchat/ask_howbuilt:
+    - text: "J'ai ete cree par l'equipe Neero en utilisant des technologies d'intelligence artificielle. Mon but : rendre vos operations financieres plus simples !"
+    - text: "L'equipe technique de Neero m'a concu avec de l'IA pour vous offrir la meilleure experience possible."
+
+  utter_chitchat/ask_wherefrom:
+    - text: "Je viens du Cameroun, tout comme Neero ! Notre mission est de faciliter les paiements et transferts en Afrique et partout dans le monde."
+    - text: "Je suis ne au Cameroun, berceau de Neero. Je suis la pour servir nos utilisateurs partout !"
+
+  utter_chitchat/ask_capabilities:
+    - text: "Je parle francais et je suis specialise dans les services financiers Neero. Je peux vous aider avec les cartes, les transferts, les frais et le support."
+    - text: "Je suis un assistant IA, donc je ne dors pas et je ne mange pas ! Mais je comprends le francais et je suis la 24h/24 pour vos questions Neero."
+    - text: "J'apprends en permanence ! Pour l'instant je maitrise les cartes Neero, les transferts et les informations sur nos services."
+
+  utter_chitchat/handle_compliment:
+    - text: "Merci beaucoup, c'est tres gentil ! Ca me motive a faire encore mieux pour vous."
+    - text: "Oh merci ! Je fais de mon mieux pour etre utile. N'hesitez pas si vous avez besoin de quoi que ce soit."
+    - text: "C'est tres aimable ! Je suis content de pouvoir vous aider."
+
+  utter_chitchat/handle_mood:
+    - text: "Je comprends. Si je peux faire quelque chose pour vous remonter le moral, dites-le moi ! Sinon, je suis la pour vos operations Neero."
+    - text: "Merci de partager ca avec moi. Je suis la si vous avez besoin d'aide avec quoi que ce soit chez Neero."
+    - text: "J'espere que ca ira mieux bientot ! En attendant, n'hesitez pas a me dire comment je peux vous aider."
+
+  utter_chitchat/ask_joke:
+    - text: "Pourquoi les plongeurs plongent toujours en arriere ? Parce que sinon ils tomberaient dans le bateau ! ...Bon, revenons a vos finances ?"
+    - text: "Un client demande a son banquier : 'Ou est mon argent ?' Le banquier repond : 'Il est en securite... chez Neero !' Alors, que puis-je faire pour vous ?"
+    - text: "Je suis meilleur en finance qu'en humour, mais voici quand meme : Quelle est la monnaie preferee des chats ? Les souris ! Bon, comment puis-je vous aider ?"
+
+  utter_anything_else:
+    - text: "Y a-t-il autre chose que je puisse faire pour vous ?"
+      buttons:
+        - title: "Oui"
+          payload: "/affirm"
+        - title: "Non, merci"
+          payload: "/goodbye"
+
+  utter_what_help:
+    - text: "D'accord ! Comment puis-je vous aider ?"
+
+  utter_ask_feedback:
+    - text: "Cette interaction vous a-t-elle ete utile ?"
+      buttons:
+        - title: "Oui"
+          payload: '/feedback{{"feedback_value": "positive"}}'
+        - title: "Non"
+          payload: '/feedback{{"feedback_value": "negative"}}'
+
+  utter_thanks_feedback:
+    - text: "Merci pour votre retour !"
+
+  utter_ask_continue_transfer:
+    - text: "Souhaitez-vous continuer le transfert ?"
+      buttons:
+        - title: "Oui"
+          payload: "/affirm"
+        - title: "Non"
+          payload: "/deny"

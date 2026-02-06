@@ -64,6 +64,8 @@ nlu:
     - Salut l'équipe
     - Coucou Neero
     - Bien le bonjour
+    - bonne annee
+    - joyeux noel
 
 - intent: goodbye
   examples: |
@@ -80,6 +82,8 @@ nlu:
     - ciao
     - bye bot
     - salut à plus
+    - bonne soirée
+    - bon weekend
     - A plus tard
     - Bonne nuit
     - Je dois y aller
@@ -387,7 +391,6 @@ nlu:
 - intent: out_of_scope
   examples: |
     - quel temps fait-il
-    - raconte une blague
     - quelle heure est-il
     - qui est le président
     - tu aimes quoi

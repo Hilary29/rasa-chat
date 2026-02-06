@@ -17,19 +17,26 @@ pipeline:
   - name: DIETClassifier
     epochs: 100
     constrain_similarities: true
-    entity_recognition: true 
+    entity_recognition: true
+    ranking_length: 5
+  - name: EntitySynonymMapper
+  - name: ResponseSelector
+    retrieval_intent: chitchat
+    epochs: 100
+    constrain_similarities: true
+    scale_loss: false
   - name: FallbackClassifier
-    threshold: 0.4
+    threshold: 0.5
     ambiguity_threshold: 0.1
 
 policies:
-  - name: MemoizationPolicy
-    max_history: 5
+  - name: AugmentedMemoizationPolicy
+    max_history: 6
   - name: RulePolicy
     core_fallback_threshold: 0.4
     core_fallback_action_name: utter_default
     enable_fallback_prediction: true
   - name: TEDPolicy
-    max_history: 5
+    max_history: 6
     epochs: 100
     constrain_similarities: true

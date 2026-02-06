@@ -1,0 +1,35 @@
+version: "3.1"
+
+nlu:
+- intent: explain
+  examples: |
+    - pourquoi ?
+    - pourquoi tu demandes ca ?
+    - c'est pour quoi ?
+    - a quoi ca sert ?
+    - pourquoi tu as besoin de ca ?
+    - explique
+    - explique moi
+    - je comprends pas pourquoi
+    - pourquoi cette question ?
+    - en quoi c'est necessaire ?
+    - c'est obligatoire ?
+    - pourquoi je dois donner ca ?
+    - a quoi ca va servir ?
+    - je vois pas pourquoi
+    - dans quel but ?
+    - pour quelle raison ?
+    - ca sert a quoi exactement ?
+    - tu peux m'expliquer pourquoi ?
+    - pourquoi cette info ?
+    - pourquoi vous avez besoin de cette information ?
+    - je ne comprends pas la question
+    - qu'est-ce que tu veux dire ?
+    - c'est quoi cette question ?
+    - pourquoi tu me demandes mon numero ?
+    - pourquoi le montant ?
+    - c'est necessaire ca ?
+    - je dois vraiment donner ca ?
+    - tu peux expliquer ?
+    - dis moi pourquoi
+    - j'aimerais comprendre pourquoi

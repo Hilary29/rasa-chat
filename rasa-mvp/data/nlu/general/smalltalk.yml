@@ -1,5 +1,157 @@
 version: "3.1"
 
 nlu:
-- intent: smalltalk
+- intent: chitchat/ask_howdoing
   examples: |
+    - ca va ?
+    - comment ca va ?
+    - tu vas bien ?
+    - salut ca va ?
+    - comment tu te sens ?
+    - la forme ?
+    - quoi de neuf ?
+    - tout va bien ?
+    - t'es en forme ?
+    - ca roule ?
+    - bien ou bien ?
+    - comment tu vas aujourd'hui ?
+    - tu te portes bien ?
+    - ca va ou bien ?
+    - tu vas comment ?
+
+- intent: chitchat/ask_whatname
+  examples: |
+    - comment tu t'appelles ?
+    - c'est quoi ton nom ?
+    - quel est ton nom ?
+    - tu t'appelles comment ?
+    - ton nom c'est quoi ?
+    - dis moi ton nom
+    - t'as un nom ?
+    - comment on t'appelle ?
+    - tu as un prenom ?
+    - quel est ton prenom ?
+    - ton petit nom c'est quoi ?
+    - tu as un nom ?
+
+- intent: chitchat/ask_whoami
+  examples: |
+    - qui es-tu ?
+    - t'es qui toi ?
+    - tu es qui ?
+    - tu es quoi exactement ?
+    - c'est quoi ton role ?
+    - tu fais quoi dans la vie ?
+    - c'est quoi ton travail ?
+    - tu es la pour quoi ?
+    - a quoi tu sers ?
+    - presente toi
+    - tu sers a quoi ?
+    - quel est ton role ?
+    - c'est quoi ta mission ?
+
+- intent: chitchat/ask_age
+  examples: |
+    - quel age as-tu ?
+    - t'as quel age ?
+    - tu as quel age ?
+    - tu existes depuis quand ?
+    - ca fait combien de temps que tu existes ?
+    - tu es ne quand ?
+    - depuis quand tu es la ?
+    - tu as ete cree quand ?
+    - t'es vieux ?
+    - tu es jeune ou vieux ?
+    - tu as quel age exactement ?
+
+- intent: chitchat/ask_howbuilt
+  examples: |
+    - comment tu fais ca ?
+    - tu es cree par qui ?
+    - qui t'a cree ?
+    - qui t'a fabrique ?
+    - tu es fait avec quoi ?
+    - quelle technologie tu utilises ?
+    - qui t'a programme ?
+    - comment tu fonctionnes ?
+    - t'es base sur quoi ?
+    - avec quoi tu as ete construit ?
+    - comment t'as ete fabrique ?
+    - tu marches comment ?
+
+- intent: chitchat/ask_wherefrom
+  examples: |
+    - tu es de quel pays ?
+    - tu viens d'ou ?
+    - d'ou tu viens ?
+    - tu habites ou ?
+    - t'es base ou ?
+    - tu es camerounais ?
+    - tu es francais ?
+    - tu es africain ?
+    - c'est quoi ton pays ?
+    - ou est-ce que tu vis ?
+    - tu es d'ou ?
+    - tu viens de quel pays ?
+
+- intent: chitchat/ask_capabilities
+  examples: |
+    - tu parles quelles langues ?
+    - tu parles francais ?
+    - tu parles anglais ?
+    - t'es intelligent ?
+    - tu es intelligent ?
+    - tu comprends tout ?
+    - tu dors ?
+    - tu manges ?
+    - tu es fatigue ?
+    - tu peux apprendre ?
+    - tu comprends tout ce que je dis ?
+    - t'es vraiment intelligent ?
+    - tu es capable de quoi ?
+
+- intent: chitchat/handle_compliment
+  examples: |
+    - tu es sympa
+    - t'es cool
+    - tu es gentil
+    - bravo
+    - bien joue
+    - tu me plais
+    - je t'aime bien
+    - t'es genial
+    - tu es impressionnant
+    - chapeau
+    - tu geres
+    - t'es le meilleur
+    - t'es super
+
+- intent: chitchat/handle_mood
+  examples: |
+    - je m'ennuie
+    - je suis triste
+    - je suis content
+    - je ne vais pas bien
+    - je suis fatigue
+    - j'ai le moral a zero
+    - je suis de bonne humeur
+    - ca ne va pas du tout
+    - je suis stresse
+    - je suis heureux
+    - je me sens seul
+    - j'ai pas le moral
+
+- intent: chitchat/ask_joke
+  examples: |
+    - raconte une blague
+    - dis moi une blague
+    - fais moi rire
+    - t'as des blagues ?
+    - raconte quelque chose de drole
+    - tu connais des blagues ?
+    - fais de l'humour
+    - dis un truc marrant
+    - une blague s'il te plait
+    - amuse moi
+    - tu sais raconter des blagues ?
+    - allez une petite blague

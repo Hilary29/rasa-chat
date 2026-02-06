@@ -5,14 +5,21 @@
 # https://rasa.com/docs/rasa/custom-actions
 
 from typing import Any, Text, Dict, List, Optional
+import csv
+import json
+import os
 import re
 
 from rasa_sdk import Action, Tracker, FormValidationAction
 from rasa_sdk.executor import CollectingDispatcher
-from rasa_sdk.events import SlotSet, Restarted
+from rasa_sdk.events import SlotSet, UserUtteranceReverted, Restarted
 from rasa_sdk.types import DomainDict
 
 from actions.api.user import ActionGetUserInfo  # noqa: F401
+
+INTENT_DESCRIPTION_MAPPING_PATH = os.path.join(
+    os.path.dirname(__file__), "intent_description_mapping.csv"
+)
 
 class ValidateTransferForm(FormValidationAction):
 
@@ -297,5 +304,122 @@ class ActionRestart(Action):
 
         dispatcher.utter_message(text="Conversation reinitialisee. Comment puis-je vous aider ?")
         return [Restarted()]
+
+
+class ActionAskAffirmation(Action):
+    """Disambiguation : propose les top intents sous forme de boutons quand le NLU n'est pas sur."""
+
+    def name(self) -> Text:
+        return "action_ask_affirmation"
+
+    def __init__(self) -> None:
+        self.intent_mappings = {}
+        try:
+            with open(INTENT_DESCRIPTION_MAPPING_PATH, newline="", encoding="utf-8") as f:
+                reader = csv.DictReader(f)
+                for row in reader:
+                    self.intent_mappings[row["intent"].strip()] = row["button"].strip()
+        except FileNotFoundError:
+            pass
+
+    def run(
+        self,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: Dict[Text, Any]
+    ) -> List[Dict[Text, Any]]:
+
+        intent_ranking = tracker.latest_message.get("intent_ranking", [])
+
+        if len(intent_ranking) > 1:
+            diff = intent_ranking[0].get("confidence", 0) - intent_ranking[1].get("confidence", 0)
+            if diff < 0.2:
+                intent_ranking = intent_ranking[:2]
+            else:
+                intent_ranking = intent_ranking[:1]
+
+        # Filtrer les intents inutiles pour la disambiguation
+        exclude = {"nlu_fallback", "out_of_scope"}
+        first_intent_names = [
+            i.get("name", "") for i in intent_ranking
+            if i.get("name", "") not in exclude
+        ]
+
+        if first_intent_names:
+            entities = tracker.latest_message.get("entities", [])
+            entities_dict = {e["entity"]: e["value"] for e in entities}
+            entities_json = json.dumps(entities_dict) if entities_dict else ""
+
+            buttons = []
+            for intent in first_intent_names:
+                button_title = self.intent_mappings.get(intent, intent)
+                payload = f"/{intent}{entities_json}" if entities_json else f"/{intent}"
+                buttons.append({"title": button_title, "payload": payload})
+
+            buttons.append({"title": "Autre chose", "payload": "/out_of_scope"})
+
+            dispatcher.utter_message(
+                text="Je ne suis pas sur d'avoir compris. Vouliez-vous dire :",
+                buttons=buttons
+            )
+        else:
+            dispatcher.utter_message(
+                text="Je n'ai pas compris votre demande. Pouvez-vous reformuler ?"
+            )
+
+        return []
+
+
+class ActionDefaultFallback(Action):
+    """Fallback final : propose de reformuler ou de recommencer."""
+
+    def name(self) -> Text:
+        return "action_default_fallback"
+
+    def run(
+        self,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: Dict[Text, Any]
+    ) -> List[Dict[Text, Any]]:
+
+        dispatcher.utter_message(
+            text="Je n'ai pas reussi a comprendre votre demande. Vous pouvez reformuler ou recommencer.",
+            buttons=[
+                {"title": "Recommencer", "payload": "/restart"},
+                {"title": "Contacter le support", "payload": "/contact_support"}
+            ]
+        )
+        return [UserUtteranceReverted()]
+
+
+class ActionExplainTransferForm(Action):
+    """Explique pourquoi le formulaire demande le slot courant."""
+
+    def name(self) -> Text:
+        return "action_explain_transfer_form"
+
+    def run(
+        self,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: Dict[Text, Any]
+    ) -> List[Dict[Text, Any]]:
+
+        requested_slot = tracker.get_slot("requested_slot")
+
+        explanations = {
+            "transfer_type": "J'ai besoin de savoir si vous envoyez vers un wallet Neero ou via Mobile Money pour router votre transfert correctement.",
+            "amount": "J'ai besoin du montant que vous souhaitez envoyer pour preparer votre transfert.",
+            "neero_id": "J'ai besoin du username Neero (format @username) du destinataire pour lui envoyer les fonds.",
+            "phone_number": "J'ai besoin du numero de telephone du destinataire pour le transfert Mobile Money.",
+        }
+
+        explanation = explanations.get(
+            requested_slot,
+            "J'ai besoin de cette information pour completer votre transfert."
+        )
+        dispatcher.utter_message(text=explanation)
+        return []
 
 

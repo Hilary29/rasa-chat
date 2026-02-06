@@ -81,10 +81,10 @@ rules:
   - intent: contact_support
   - action: utter_contact_support
 
-- rule: Fallback
+- rule: Demander clarification (fallback NLU)
   steps:
   - intent: nlu_fallback
-  - action: utter_default
+  - action: action_ask_affirmation
 
 - rule: Utilisateur ne peut pas être aidé
   steps:
@@ -96,10 +96,10 @@ rules:
   - intent: why_neero
   - action: utter_why_neero
 
-- rule: Smalltalk
+- rule: Chitchat
   steps:
-  - intent: smalltalk
-  - action: utter_smalltalk
+  - intent: chitchat
+  - action: utter_chitchat
 
 # === REGLES DU FORMULAIRE DE TRANSFERT ===
 
@@ -122,10 +122,76 @@ rules:
   - intent: confirm_transfer
   - action: utter_transfer_initiated
   - action: action_clear_transaction_slots
+  - action: utter_ask_feedback
 
 - rule: Annuler le transfert
   steps:
   - intent: cancel_transfer
   - action: utter_transfer_cancelled
+  - action: action_clear_transaction_slots
+  - action: utter_anything_else
+
+- rule: Feedback positif
+  steps:
+  - intent: feedback
+  - action: utter_thanks_feedback
+  - action: utter_anything_else
+
+- rule: Autre chose - oui
+  steps:
+  - action: utter_anything_else
+  - intent: affirm
+  - action: utter_what_help
+
+- rule: Autre chose - non
+  steps:
+  - action: utter_anything_else
+  - intent: goodbye
+  - action: utter_goodbye
+
+- rule: Explication pendant transfert
+  condition:
+  - active_loop: transfer_form
+  steps:
+  - intent: explain
+  - action: action_explain_transfer_form
+  - action: transfer_form
+  - active_loop: transfer_form
+
+- rule: Hors sujet pendant transfert
+  condition:
+  - active_loop: transfer_form
+  steps:
+  - intent: out_of_scope
+  - action: utter_out_of_scope
+  - action: transfer_form
+  - active_loop: transfer_form
+
+- rule: Contact support pendant transfert
+  condition:
+  - active_loop: transfer_form
+  steps:
+  - intent: contact_support
+  - action: utter_contact_support
+  - action: transfer_form
+  - active_loop: transfer_form
+
+- rule: Chitchat pendant transfert
+  condition:
+  - active_loop: transfer_form
+  steps:
+  - intent: chitchat
+  - action: utter_chitchat
+  - action: transfer_form
+  - active_loop: transfer_form
+
+- rule: Annuler pendant transfert (deny)
+  condition:
+  - active_loop: transfer_form
+  steps:
+  - intent: deny
+  - action: utter_transfer_cancelled
+  - action: action_deactivate_loop
+  - active_loop: null
   - action: action_clear_transaction_slots
 
