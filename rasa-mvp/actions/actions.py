@@ -50,12 +50,28 @@ class ValidateTransferForm(FormValidationAction):
         # Fallback
         return ["transfer_type", "amount"]
 
+    # Intents qui ne sont pas lies au remplissage du formulaire
+    NON_FORM_INTENTS = {
+        "chitchat", "explain", "out_of_scope", "deny", "cancel_transfer",
+        "contact_support", "greet", "goodbye", "thank", "bot_challenge",
+        "cant_help", "ask_help", "nlu_fallback", "ask_help_card",
+        "why_neero", "feedback", "restart",
+    }
+
+    def _is_non_form_intent(self, tracker: Tracker) -> bool:
+        intent = tracker.latest_message.get("intent", {}).get("name", "")
+        return intent in self.NON_FORM_INTENTS
+
     async def extract_transfer_type(
         self,
         dispatcher: CollectingDispatcher,
         tracker: Tracker,
         domain: DomainDict,
     ) -> Dict[Text, Any]:
+
+        # Ne pas extraire si l'intent n'est pas lie au formulaire
+        if self._is_non_form_intent(tracker):
+            return {}
 
         # Verifier si deja defini
         current_transfer_type = tracker.get_slot("transfer_type")
@@ -131,14 +147,12 @@ class ValidateTransferForm(FormValidationAction):
         if slot_value in ["neero", "mobile_money"]:
             return {"transfer_type": slot_value}
 
-        normalized = self._normalize_transfer_type(slot_value)
-        if normalized:
-            return {"transfer_type": normalized}
+        if slot_value:
+            normalized = self._normalize_transfer_type(slot_value)
+            if normalized:
+                return {"transfer_type": normalized}
 
-#        dispatcher.utter_message(
-#            text="Quel type de transfert souhaitez vous effectuer? Veuillez choisir Neero ou Mobile Money."
-#        )
-#        return {"transfer_type": None}  
+        return {"transfer_type": None}
 
     def validate_amount(
         self,
